@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="../admin/css/admin.css">
+  <form action="/admin/adminLoginAction" method="post" onsubmit="return adminLoginValidation()">
+		<div class="login-box">
+			<h1>Login</h1>
+
+			<div class="textbox">
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<input type="text" placeholder="Name"
+						name="username" id="aName" value="">
+            
+			</div>
+      <span id="nameError"></span>
+
+			<div class="textbox">
+				<i class="fa fa-lock" aria-hidden="true"></i>
+				<input type="password" placeholder="Password"
+						name="password" id="pass" value="">
+			</div>
+      <span id="passwordError"></span>
+
+
+			<input class="button" type="submit"
+				 value="Sign In">
+		</div>
+	</form>
+
+
+  <script>
+    function adminLoginValidation(){
+        let flag =0 
+        let name = document.getElementById('aName').value.trim()
+        let password = document.getElementById('pass').value.trim()
+
+        if(name == ''){
+            document.getElementById('nameError').innerHTML = "Name Required"
+            flag=1
+        }else{
+            document.getElementById('nameError').innerHTML = ""
+        }
+
+
+        if(password == ''){
+            document.getElementById('passwordError').innerHTML = "Password Required"
+            flag=1
+        }else{
+            document.getElementById('passwordError').innerHTML = ""
+        }
+        
+        if(flag==1){
+            return false
+        }
+    }
+  </script>
+
+<script>
+  let sidebar = document.querySelector(".sidebar");
+ let sidebarBtn = document.querySelector(".sidebarBtn");
+ sidebarBtn.onclick = function() {
+ sidebar.classList.toggle("active");
+ if(sidebar.classList.contains("active")){
+ sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right"); 
+ }else
+ sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+ }
+ </script>

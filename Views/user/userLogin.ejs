@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../user/fonts/icomoons/style.css">
+
+    <link rel="stylesheet" href="../user/css/owl.carousel.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../user/css/bootstrap.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="../user/css/loginstyle.css">
+
+    <title>Foody</title>
+  </head>
+  <body>
+  
+
+  <div class="d-md-flex half">
+    <div class="bg" style="background-image: url('../user/img/bcklogin.jpg'); width: 80%; height:100%;"></div>
+    <div class="contents">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-12">
+            <div class="form-block mx-auto">
+              <div class="text-center mb-5">
+                <h3 class="text-uppercase"><strong> <span class="text-success">F</span><span class="text-warning">oo</span><span class="text-success">dy</span></strong></h3>
+              </div>
+              <form action="/login" method="post" onsubmit="return userLoginValidation()">
+                <div class="form-group first">
+                  <label for="username">Email</label>
+                  <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email">
+                </div>
+                <span id="emailError" class="text-danger"></span><br>
+                <div class="form-group last mb-3">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" placeholder="Enter Password" name="password" id="pass">
+                </div>
+                <span id="passwordError" class="text-danger"></span>
+                <div class="d-sm-flex mb-5 align-items-center">
+                  <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span>
+                    <input type="checkbox" checked="checked"/>
+                    <div class="control__indicator"></div>
+                  </label>
+                  <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+                </div>
+
+                <input type="submit" value="Log In" class="btn btn-block py-2 btn-success">
+
+                <span class="text-center my-3 d-block">or</span>
+                
+                
+                <div class="">
+                <a href="/signup" class="btn btn-block py-2 btn-facebook">
+                  <span></span> Signup
+                </a>
+                
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+    
+    
+
+    <script src="../user/js/jquery-3.3.1.min.js"></script>
+    <script src="../user/js/popper.js"></script>
+    <script src="../user/js/bootstrap.js"></script>
+    <script src="../user/js/loginmain.js"></script>
+  </body>
+</html>
+    <script>
+      function userLoginValidation(){
+        let flag=0
+        let name = document.getElementById('email').value.trim()
+        let password = document.getElementById('pass').value.trim()
+
+        if(name == ''){
+          document.getElementById('emailError').innerHTML = "Name Required"
+          flag=1
+        }else if(name.length<3){
+          document.getElementById('emailError').innerHTML="Enter atleast 3 character"
+          flag=1
+        }else{
+          document.getElementById('emailError').innerHTML = ""
+        }
+
+        if(password == ''){
+          document.getElementById('passwordError').innerHTML = "Password Required"
+          flag=1
+        }else{
+          document.getElementById('passwordError').innerHTML = ""
+        }
+
+        if(flag==1){
+          return false
+        }
+      }
+    </script>

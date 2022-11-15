@@ -1,0 +1,41 @@
+  <section class="home-section mt-5">
+    <div class="container mt-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">S.No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Blocked User</th>
+            <th scope="col">Unblocked User</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% for(var i=0;i<user_Details.length;i++) { %>
+            <th scope="row"><%= i+1 %></th>
+            <td><%= user_Details[i].name %></td>
+            <td><%= user_Details[i].email %></td>
+            <td><a class="btn btn-danger" href="">Block</a></td>
+            <td><a class="btn btn-primary" href="">Unblock</a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+     </div>
+  </section>
+
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+   let sidebarBtn = document.querySelector(".sidebarBtn");
+   sidebarBtn.onclick = function() {
+   sidebar.classList.toggle("active");
+   if(sidebar.classList.contains("active")){
+   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right"); 
+   }else
+   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+   }
+   </script>
+ 
+ 
+

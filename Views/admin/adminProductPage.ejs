@@ -1,0 +1,54 @@
+  <!-- Button trigger modal -->
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end m-5">
+  <a href="/admin/addProducts" class="btn btn-primary">Add Product</a>
+  </button>
+  </div>
+  <section class="home-section">
+    <div class="container">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Product Image</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <% for (var i=0;i<product.length;i++) {%> 
+      <tr>
+        <th scope="row"><%= i+1 %></th>
+        <td><%= product[i].productName %></td>
+        <td><%= product[i].category %></td>
+        <td><%= product[i].brand %></td>
+        <td><%= product[i].sellingPrice %></td>
+        <td><%= product[i].quantity %></td>
+        <td><%= product[i].productDescription %></td>
+        <td> <img src="/admin/images/<%= product[i].Picture %>" style="width: 75px; height: 75px;" alt=""></td>
+        <td><a class="btn btn-danger" href="/admin/editProduct?id=<%= product[i]._id%>">Edit</a></td>
+        <td><a class="btn btn-primary" href="/admin/deleteProduct?id=<%= product[i]._id%>" onclick="return confirm('Are you want to delete <%= product[i].productName %>')">Delete</a></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+    </div>
+  </section>
+  
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+   let sidebarBtn = document.querySelector(".sidebarBtn");
+   sidebarBtn.onclick = function() {
+   sidebar.classList.toggle("active");
+   if(sidebar.classList.contains("active")){
+   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right"); 
+   }else
+   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+   }
+   </script>
+

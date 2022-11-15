@@ -1,0 +1,51 @@
+<section class="vh-100  text-white" style="background-color: rgb(144, 213, 123);">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6 text-black ">
+          <div class="px-5 ms-xl-4 mt-5">
+            
+            <span class="h1 fw-bold mb-5 m-5 p-5 text-dark">VERIFY YOUR EMAIL </span>
+          </div>
+  
+          <div
+            class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5"
+          >
+           <div class="m-5 p-5">
+            <form style="width: 23rem" onsubmit="return otpValidation()" method="post" action="/verifyOtp">
+             <label for="otp verification"><h5 class="text-dark">Enter the OTP given in your Email</h5></label><br>
+             <input type="text" name="Otp" id="Otp" placeholder="Enter OTP" aria-label="Large" class="form-control" ><br><br>
+             <span name="otpError"></span>
+             <input type="submit" name="checkOtp" id="checkOtp" class="btn btn-primary rounded-pill">
+            </form>
+           </div>
+          </div>
+        </div>
+        <div class="col-sm-6 px-0 d-none d-sm-block">
+          <img
+            src="https://media.glamourmagazine.co.uk/photos/6138b2902677a6ca5ae35826/master/w_1600%2Cc_limit/love-belly-glamour_4ma616_getty-b.jpg"
+            alt="Login image"
+            class="w-100 vh-100"
+            style="object-fit: cover; object-position: left"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function otpValidation(){
+        let error = 0
+        let Otp = document.getElementById('Otp').value.trim()
+        
+        if(Otp === ''){
+            document.getElementById('otpError').innerHTML = 'Invalid OTP'
+            error = 1
+        }
+        else{
+            document.getElementById('otpError').innerHTML = ''
+        }
+        if(error == 1){
+            return false
+        }
+    }
+  </script>
