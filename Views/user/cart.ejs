@@ -198,9 +198,11 @@
 			},
 			method:'post',
 			success:(response)=>{
-				if(response.removeProduct){
+				console.log(response);
+				if(response.response.removeProduct){
 					alert("Product Removed")
 					location.reload()
+					  
 				}else{
 					document.getElementById(productId).innerHTML=quantity+count
 					document.getElementById('totalAmount').innerHTML= response.result

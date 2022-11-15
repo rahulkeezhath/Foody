@@ -1,5 +1,6 @@
 const { response } = require("express")
 const userCartMgmt = require('../../Model/userCartMgmt')
+const razorpayMgmt = require('../../Model/razorpay')
 
 const userCheckout = (req,res)=>{
   let userData = req.session.user
@@ -20,14 +21,36 @@ const placeOrder = async(req,res)=>{
 const payment = async(req,res)=>{
   let products = await userCartMgmt.getCartProductList(req.body.userId)
   let totalPrice = await userCartMgmt.getTotalAmount(req.body.userId)
-  userCartMgmt.placeOrder(req.body,products,totalPrice).then((response)=>{
-    res.json({status:true})
+  userCartMgmt.placeOrder(req.body,products,totalPrice).then((orderId)=>{
+    if(req.body['payment-method']==='COD'){
+      res.json({codSuccess:true})
+    }else{
+      razorpayMgmt.generateRazorpay(orderId,totalPrice).then((response)=>{
+        res.json(response)
+      })
+    }
+
   })
  console.log(req.body);
+ }
+
+
+ const verifyPayment = (req,res)=>{
+  console.log(req.body);
+  razorpayMgmt.verifyPayment(req.body).then(()=>{
+    razorpayMgmt.changePaymentStatus(req.body.order.receipt).then(()=>{
+      console.log("Payment Successfull");
+      res.json({status:true})
+    })
+  }).catch((err)=>{
+    console.log(err);
+    res.json({status:false,errMsg:'Payment Failed'})
+  })
  }
 
 module.exports = {
   userCheckout,
   placeOrder,
-  payment
+  payment,
+  verifyPayment
 }
