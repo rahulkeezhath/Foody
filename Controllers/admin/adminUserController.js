@@ -1,3 +1,4 @@
+const { response } = require('express')
 const adminUser = require('../../Model/adminUser')
 
 const adminUserPage = (req,res)=>{
@@ -6,7 +7,20 @@ const adminUserPage = (req,res)=>{
 })
     }
 
+    const userBlock = (req,res)=>{
+        adminUser.blockUser(req.body.userId).then((response)=>{
+            res.json({status:true})
+        })
+    }
+
+    const userUnblock = (req,res)=>{
+        adminUser.unblockUser(req.body.userId).then((response)=>{
+            res.json({status:true})
+        })
+    }
 
 module.exports = {
-    adminUserPage
+    adminUserPage,
+    userBlock,
+    userUnblock
 }

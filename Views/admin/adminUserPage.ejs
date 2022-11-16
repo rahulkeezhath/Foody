@@ -6,8 +6,7 @@
             <th scope="col">S.No</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Blocked User</th>
-            <th scope="col">Unblocked User</th>
+            <th scope="col">Block/Unblock</th>
           </tr>
         </thead>
         <tbody>
@@ -16,14 +15,64 @@
             <th scope="row"><%= i+1 %></th>
             <td><%= user_Details[i].name %></td>
             <td><%= user_Details[i].email %></td>
-            <td><a class="btn btn-danger" href="">Block</a></td>
-            <td><a class="btn btn-primary" href="">Unblock</a></td>
+
+
+            <td>
+             <% if(user_Details[i].state == "active") { %>
+            <a class="btn btn-danger" onclick="userBlock('<%= user_Details[i]._id %>')">Block</a>
+             <% } else { %>
+            <a class="btn btn-primary" onclick="userUnblock('<%= user_Details[i]._id %>')">Unblock</a>
+            <% } %>
+          </td>
           </tr>
           <% } %>
+
+
         </tbody>
       </table>
      </div>
   </section>
+
+
+  <script>
+    function userBlock(userId){
+      fetch('/admin/userManagement/block',{
+        method:'post',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify({userId})
+      }).then(()=>{
+        window.location.reload()
+      }).catch((error)=>{
+        console.error("error",error);
+      })
+    }
+
+    function userUnblock(userId){
+      fetch('/admin/userManagement/unblock',{
+        method:'post',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify({userId})
+      }).then(()=>{
+        window.location.reload()
+      }).catch((error)=>{
+        console.error("error",error);
+      })
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script>
     let sidebar = document.querySelector(".sidebar");

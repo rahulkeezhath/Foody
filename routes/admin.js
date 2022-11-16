@@ -51,6 +51,8 @@ router.get('/adminLogout',admin.adminLogout)
 //User Router
 
 router.get('/adminUserPage',adminSessionCheck.adminSessionChecker,adminUser.adminUserPage)
+router.post('/userManagement/block',adminSessionCheck.adminSessionChecker,adminUser.userBlock)
+router.post('/userManagement/unblock',adminSessionCheck.adminSessionChecker,adminUser.userUnblock)
 
 
 //Category router

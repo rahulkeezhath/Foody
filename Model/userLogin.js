@@ -9,7 +9,7 @@ module.exports={
             let response ={}
             let user = await db.get().collection(collection.USER_CREDENTIALS).findOne({email:userData.email})
             if(user){
-                if(user.verified == 1){
+                if(user.verified == 1 && user.state=="active" ){
                     bcrypt.compare(userData.password,user.password).then((status)=>{
                         console.log(status);
                         if(status){

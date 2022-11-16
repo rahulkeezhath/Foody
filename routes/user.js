@@ -8,6 +8,7 @@ const userWishlist = require('../Controllers/user/userWhislist')
 const userCheckout = require('../Controllers/user/userCheckout')
 const userSessionCheck = require('../Middlewares/sessionMiddleware')
 const userOrder = require('../Controllers/user/userOrderList')
+const userProfile = require('../Controllers/user/userprofile')
 
 router.get('/',user.userLoginPage)
 router.post('/userLoginAction',user.userLoginPage)
@@ -18,6 +19,9 @@ router.post('/signup',user.userSignupAction)
 router.get('/signup',user.userSignupPage)
 router.get('/logout',user.userSignoutAction)
 router.post('/verifyOtp',user.verifyOtp)
+
+
+router.get('/profile',userProfile.profilePage)
 
 
 router.get('/cart',userSessionCheck.userSessionChecker,userCart.userCart)
