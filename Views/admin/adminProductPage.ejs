@@ -32,8 +32,8 @@
         <td><%= product[i].quantity %></td>
         <td><%= product[i].productDescription %></td>
         <td> <img src="/admin/images/<%= product[i].Picture %>" style="width: 75px; height: 75px;" alt=""></td>
-        <td><a class="btn btn-danger" href="/admin/editProduct?id=<%= product[i]._id%>">Edit</a><br>
-        <a class="btn btn-primary" href="/admin/deleteProduct?id=<%= product[i]._id%>" onclick="return confirm('Are you want to delete <%= product[i].productName %>')">Delete</a></td>
+        <td><a class="btn btn-primary" href="/admin/editProduct?id=<%= product[i]._id%>">Edit</a><br>
+        <a class="btn btn-danger" href="/admin/deleteProduct?id=<%= product[i]._id%>" onclick="return confirm('Are you want to delete <%= product[i].productName %>')">Delete</a></td>
       </tr>
       <% } %>
     </tbody>

@@ -40,6 +40,7 @@
           <th scope="col">S.NO</th>
           <th scope="col">Category Name</th>
           <th scope="col">Category Image</th>
+          <th scope="col">Edit Category</th>
           <th scope="col">Delete Category</th>
         </tr>
       </thead>
@@ -49,7 +50,8 @@
           <th scope="row"><%= i+1 %></th>
           <td><%= category[i].newCategory %></td>
           <td> <img src="/admin/images/<%= category[i].categoryImage %>" style="width: 75px; height: 75px;" alt=""></td>
-          <td><a class="btn btn-primary" href="/admin/deleteCategory?id=<%= category[i]._id%>" onclick="return confirm('Are you want to delete <%= category[i].newCategory %>')">Delete</a></td>
+          <td><a class="btn btn-primary" href="/admin/editCategory?id=<%= category[i]._id%>">Edit</a></td>
+          <td><a class="btn btn-danger" href="/admin/deleteCategory?id=<%= category[i]._id%>" onclick="return confirm('Are you want to delete <%= category[i].newCategory %>')">Delete</a></td>
         </tr>
        <% } %>
       </tbody>

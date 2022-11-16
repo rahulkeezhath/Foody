@@ -58,9 +58,9 @@
                 <input type="text" style="display: none;" id="brandID" name="brandID">
                 <div>
                 <label for="addCategory">Brand</label>
-                 <% for(var i=0; i<brand.length; i++){ %>
-                  <input type="text" name="brand" id="brand"  value="<%= brand[i].brand %>"
-                <% } %>
+                 <% for(var i=0; i<brand.length; i++) { %>
+                  <input type="text" name="brand" id="brand"  value="<%= brand[i].brand %>">
+                 <% } %>
             </div>
             </div>
             <span class="text-danger text-center" id="brandError"></span>
@@ -92,8 +92,8 @@
               <th scope="row"><%= i+1 %></th>
               <td><%= brand[i].categoryName %></td>
               <td><%= brand[i].brand %></td>
-              <td><a class="btn btn-danger" href="" data-bs-toggle="modal" data-bs-target="#exampleModalh" onclick="brandEdit('<%= brand[i]._id %>','<%= brand[i].brand %>')">Edit</a></td>
-              <td><a class="btn btn-primary" href="/admin/deleteBrand?id=<%= brand[i]._id%>" onclick=" return confirm('Are you want to delete <%= brand[i].brand%>')">Delete</a></td>
+              <td><a class="btn btn-primary" href="" data-bs-toggle="modal" data-bs-target="#exampleModalh" onclick="brandEdit('<%= brand[i]._id %>','<%= brand[i].brand %>')">Edit</a></td>
+              <td><a class="btn btn-danger" href="/admin/deleteBrand?id=<%= brand[i]._id%>" onclick=" return confirm('Are you want to delete <%= brand[i].brand%>')">Delete</a></td>
             </tr>
             <% } %>
           </tbody>
