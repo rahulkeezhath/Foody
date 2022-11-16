@@ -6,5 +6,6 @@ module.exports={
     ADD_BANNER:'add_banner',
     USER_CREDENTIALS:'user_credentials',
     ADD_CART:'add_cart',
+    ADD_WISHLIST:'add_wishlist',
     ORDER_COLLECTION:'order'
 }

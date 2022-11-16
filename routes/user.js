@@ -26,12 +26,13 @@ router.post('/changeProductQuantity',userSessionCheck.userSessionChecker,userCar
 
 
 
-
 router.get('/viewSingleProduct',userProduct.showProductDetails)
 
 router.get('/viewCategory',userShop.viewShop)
 
+
 router.get('/wishlist',userSessionCheck.userSessionChecker,userWishlist.userWishlist)
+router.get('/addToWishlist/:id',userSessionCheck.userSessionChecker,userWishlist.addToWishlist)
 
 
 router.get('/checkout',userSessionCheck.userSessionChecker,userCheckout.userCheckout)

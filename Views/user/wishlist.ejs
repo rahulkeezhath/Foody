@@ -18,31 +18,29 @@
                           <thead class="thead-primary">
                             <tr class="text-center">
                               <th>&nbsp;</th>
+                              <th>S.NO</th>
                               <th>Product Image</th>
                               <th>Product Description</th>
                               <th>Price</th>
-                              <th>Quantity</th>
                             </tr>
                           </thead>
                           <tbody>
+                            <% let i=1; for(values of products) { %>
                             <tr class="text-center">
                               <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
                               
-                              <td class="image-prod"><div class="img" style="background-image:url(../user/img/product-1.jpg);"></div></td>
+                              <td><%= i++ %></td>
+
+                              <td class="image-prod"><div class="img" style="background-image:url('/admin/images/<%= values.products.Picture %>');"></div></td>
                               
                               <td class="product-name">
-                                  <h3>Bell Pepper</h3>
-                                  <p>Far far away, behind the word mountains, far from the countries</p>
+                                  <h3><%= values.products.productName %></h3>
+                                  <p>Rs.<%= values.products.productDescription %></p>
                               </td>
                               
-                              <td class="price">$4.90</td>
-                              
-                              <td class="quantity">
-                                  <div class="input-group mb-3">
-                                   <input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-                                </div>
-                            </td>
+                              <td class="price">Rs.<%= values.products.sellingPrice %></td>
                             </tr><!-- END TR-->
+                            <% } %>
                           </tbody>
                         </table>
                     </div>
@@ -50,3 +48,7 @@
           </div>
           </div>
       </section>
+
+      <script>
+        
+      </script>
