@@ -5,7 +5,7 @@
   </div>
   <section class="home-section">
     <div class="container">
-  <table class="table">
+  <table class="table" id="productsTable">
     <thead class="thead-dark">
       <tr>
         <th scope="col">S.NO</th>
@@ -16,6 +16,7 @@
         <th scope="col">Quantity</th>
         <th scope="col">Product Description</th>
         <th scope="col">Product Image</th>
+        <th scope="col">Options</th>
         
         
       </tr>
@@ -31,8 +32,8 @@
         <td><%= product[i].quantity %></td>
         <td><%= product[i].productDescription %></td>
         <td> <img src="/admin/images/<%= product[i].Picture %>" style="width: 75px; height: 75px;" alt=""></td>
-        <td><a class="btn btn-danger" href="/admin/editProduct?id=<%= product[i]._id%>">Edit</a></td>
-        <td><a class="btn btn-primary" href="/admin/deleteProduct?id=<%= product[i]._id%>" onclick="return confirm('Are you want to delete <%= product[i].productName %>')">Delete</a></td>
+        <td><a class="btn btn-danger" href="/admin/editProduct?id=<%= product[i]._id%>">Edit</a><br>
+        <a class="btn btn-primary" href="/admin/deleteProduct?id=<%= product[i]._id%>" onclick="return confirm('Are you want to delete <%= product[i].productName %>')">Delete</a></td>
       </tr>
       <% } %>
     </tbody>
@@ -52,3 +53,9 @@
    }
    </script>
 
+
+<script>
+$(document).ready( function () {
+  $('#productsTable').DataTable();
+} );
+</script>

@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="../user/css/flaticon.css">
 <link rel="stylesheet" href="../user/css/icomoon.css">
 <link rel="stylesheet" href="../user/css/style.css">
-
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 
 
 
@@ -40,12 +40,12 @@
 			<div class="row">
 			<div class="col-md-12 ftco-animate">
 				<div class="cart-list">
-					<table class="table">
+					<table class="table" id="cartTable">
 						<thead class="thead-primary">
 						  <tr class="text-center">
 							<th>&nbsp;</th>
 							<th>S.NO</th>
-							<th>&nbsp;</th>
+							<th>Product Image</th>
 							<th>Product name</th>
 							<th>Price</th>
 							<th>Quantity</th>
@@ -183,6 +183,8 @@
 <script src="../user/js/google-map.js"></script>
 <script src="../user/js/main.js"></script>
 
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
 <script>
 	function changeQuantity(cartId,productId,count,userData){
 		let quantity = parseInt(document.getElementById(productId).innerHTML)
@@ -211,7 +213,14 @@
 			}    
 		})
 	}
+
+	$(document).ready( function () {
+    $('#cartTable').DataTable();
+} );
+
+
 </script>
+
 
 
 
