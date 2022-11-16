@@ -40,8 +40,7 @@
                                       <a href="viewSingleProduct?id=<%= values._id %>" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                           <span><i class="ion-ios-menu"></i></span>
                                       </a>
-                                      <a href="/cart" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                          <span><i class="ion-ios-cart"></i></span>
+                                      <button onclick="addToCart('<%= values._id %>')" class="btn btn-success"><span><i class="ion-ios-cart"></i></span></button>
                                       </a>
                                       <a href="/wishlist" class="heart d-flex justify-content-center align-items-center ">
                                           <span><i class="ion-ios-heart"></i></span>

@@ -2,9 +2,14 @@ const { response } = require("express")
 const userCartMgmt = require('../../Model/userCartMgmt')
 const razorpayMgmt = require('../../Model/razorpay')
 
-const userCheckout = (req,res)=>{
+const userCheckout = async(req,res)=>{
   let userData = req.session.user
-  res.render('user/checkout',{admin:false,user:true,userData})
+  let cartCount = null
+  if(req.session.user){
+  cartCount = await userCartMgmt.getCartCount(req.session.user._id)
+  let totalAmount = await userCartMgmt.getTotalAmount(req.session.user._id)
+  res.render('user/checkout',{admin:false,user:true,userData,cartCount,totalAmount})
+  }
 }
 
 const placeOrder = async(req,res)=>{
