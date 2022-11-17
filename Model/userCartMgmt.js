@@ -111,6 +111,8 @@ module.exports = {
 },
     getTotalAmount:(userId)=>{
         return new Promise(async(resolve,reject)=>{
+            let userCart = await db.get().collection(collection.ADD_CART).findOne({user:ObjectId(userId)})
+            if(userCart.products.length >0){
             let totalAmount =  await db.get().collection(collection.ADD_CART).aggregate([
                 {
                     $match:{user:ObjectId(userId)}
@@ -151,9 +153,12 @@ module.exports = {
                 }
 
             ]).toArray()
-            response.totalAmount = totalAmount
-
-            resolve(totalAmount[0].total)
+            response.totalAmount = totalAmount[0].total
+            resolve(response.totalAmount)
+        }else{
+            response.totalAmount = 0
+            resolve(response.totalAmount)
+        }
         })
     },
     placeOrder:(order,products,total)=>{

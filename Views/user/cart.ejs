@@ -53,6 +53,7 @@
 						  </tr>
 						</thead>
 						<tbody>
+							<% if(products.length>=0) { %>
 							<% let i=1; for(values of products) { %> 
 						  <tr class="text-center">
 							<td class="product-remove"><a href="/deleteProduct?id=<%=values._id %>"><span class="ion-ios-close"></span></a></td>
@@ -78,6 +79,13 @@
 							<!-- <td class="total">Rs.<%= values.products.sellingPrice %></td> -->
 						  </tr><!-- END TR-->
 						<% } %>
+						<% } else { %>
+							<tr>
+							<td>
+								<h1>Cart is Empty</h1>
+							</td>
+							</tr>
+							<% } %>
 						</tbody>
 					  </table>
 				  </div>
@@ -121,15 +129,15 @@
 			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
 				<div class="cart-total mb-3">
 					 <h3>Cart Totals</h3>
-					<!-- <p class="d-flex">
+					<p class="d-flex">
 						<span>Subtotal</span>
-						<span>Rs.<%= totalValue %></span>
+						Rs.<span id="totalPrice"><%= totalValue %></span>
 					</p>
 					<p class="d-flex">
 						<span>Delivery</span>
 						<span>Rs.0</span>
 					</p>
-					<p class="d-flex">
+					<!-- <p class="d-flex">
 						<span>Discount</span>
 						<span>$3.00</span>
 					</p> -->
@@ -202,13 +210,12 @@
 			success:(response)=>{
 				console.log(response);
 				if(response.response.removeProduct){
-					alert("Product Removed")
 				    window.location.reload()
 					  
 				}else{
 					document.getElementById(productId).innerHTML=quantity+count
 					document.getElementById('totalAmount').innerHTML= response.result
-				
+					document.getElementById('totalPrice').innerHTML = response.result
 				}
 			}    
 		})

@@ -1,3 +1,56 @@
+<div class="container"> 
+    <table class="table table-bordered home-section mt-5 p-5">
+        <thead class="bg-secondary">
+          <tr>
+            <th scope="col">OrderId</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Order status</th>
+            <th scope="col">Payment Method</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0;i<orderItems.length;i++) { %>
+          <tr>
+           
+          <td> <a href="/admin/orderId?id=<%= orderItems[i]._id %>"> <%= orderItems[i]._id %></td></a>
+            <td><%= orderItems[i].date.toLocaleDateString() %> <br>
+                <%= orderItems[i].date.toLocaleTimeString() %></td>
+            <td><%= orderItems[i].userDetails.Name %></td>
+            <td><%= orderItems[i].status %></td>
+            <td><%= orderItems[i].paymentMethod %></td>
+            <td><%= orderItems[i].totalAmount %></td>
+          </tr>
+          
+          <% } %>
+        
+        </tbody>
+      </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
     let sidebar = document.querySelector(".sidebar");
    let sidebarBtn = document.querySelector(".sidebarBtn");

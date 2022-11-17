@@ -23,7 +23,8 @@
                 <% let i=1; for(values of orders) { %>
                 <tr>
                   <td><%= i++ %></td>
-                  <td><%= values.date %></td>
+                  <td><%= values.date.toLocaleDateString() %><br>
+                  <%= values.date.toLocaleTimeString() %></td>
                   <td><%= values.deliveryDetails.address %></td>
                   <td><%= values.deliveryDetails.country %></td>
                   <td><%= values.deliveryDetails.state %></td>
@@ -33,7 +34,10 @@
                   <td><%= values.paymentMethod %></td>
                   <td><%= values.status %></td>
                 <td>
-                    <a href="/viewOrderProducts?id=<%=values._id %>" class="btn btn-primary">View Products</a>
+                  <button type="button" class="btn btn-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#addCategory"
+                  onclick="View('<%=values._id%>')">View Products</button>
                 </td>
             </tr>
             <% } %>
@@ -41,6 +45,27 @@
           </table>
     </div>
 </section>
+             
+          </div>
+      </div>
+  </div>
+</div>
+
+<script>
+  function View(orderId){
+    fetch('/viewOrderProducts',{
+      method:'post',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify({orderId})
+    }).then(data=>{
+        
+    })
+  }
+
+
+</script>
+
+
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 

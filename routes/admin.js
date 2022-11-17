@@ -6,37 +6,10 @@ const addBrand = require('../Controllers/admin/adminBrandController')
 const addProduct = require('../Controllers/admin/adminProductController')
 const adminUser = require('../Controllers/admin/adminUserController')
 const adminBanner = require('../Controllers/admin/adminBannerController')
-const multer = require('multer')
+const adminOrder = require('../Controllers/admin/adminOrderController')
+const upload = require('../Middlewares/multer')
 const { route } = require('./user')
 const  adminSessionCheck  = require('../Middlewares/sessionMiddleware')
-
-
-//Multer Start
-const storage = multer.diskStorage({
-    destination: './public/admin/images',
-    filename:(req, file, cb)=>{
-        cb(null, Date.now()+file.originalname)
-    }
-})
-
-
-const upload = multer({
-storage : storage,
-fileFilter:(req,file,cb)=>{
-    if(
-        file.mimetype == 'image/jpeg' || file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/webp'
-    ){
-        cb(null, true)
-    }else{
-        cb(null, false)
-        cb(new Error('only jpeg, jpg, png, webp'))
-    }
-}    
-})
-
-
-//Multer End
-
 
 
 
@@ -87,7 +60,8 @@ router.delete('/deleteBanner',adminSessionCheck.adminSessionChecker,adminBanner.
 
 // Order router
 
-router.get('/adminOrderPage',admin.adminOrderPage)
+router.get('/adminOrderPage',adminSessionCheck.adminSessionChecker,adminOrder.adminOrderPage)
+
 
 
 module.exports = router

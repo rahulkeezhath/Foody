@@ -19,6 +19,7 @@ const adminUserPage = (req,res)=>{
         })
     }
 
+
 module.exports = {
     adminUserPage,
     userBlock,

@@ -32,14 +32,11 @@ const adminLogout = (req,res)=>{
     })
 }
 
-const adminOrderPage = (req,res)=>{
-    res.render('admin/adminOrderPage',{admin:true,user:false, title:'ORDERS'})
-}
+
 
 module.exports={
     adminLoginPage,
     adminLoginAction,
     adminHome,
     adminLogout,
-    adminOrderPage
 }

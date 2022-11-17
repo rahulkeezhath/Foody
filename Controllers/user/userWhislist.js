@@ -1,14 +1,17 @@
 const { response } = require("express")
+const userCartMgmt = require('../../Model/userCartMgmt')
 const userWishlistMgmt = require('../../Model/userWishlistMgmt')
 
 
 const userWishlist = async(req,res)=>{
     let userData = req.session.user
     let cartCount = null
+    let wishlistCount = null
     if(req.session.user){
-        cartCount = await userWishlistMgmt.getWishlistCount(req.session.user._id)
+        cartCount = await userCartMgmt.getCartCount(req.session.user._id)
+        wishlistCount= await userWishlistMgmt.getWishlistCount(req.session.user._id)
     let products=  await userWishlistMgmt.getWishlistProducts(req.session.user._id)
-    res.render('user/wishlist',{admin:false,user:true,userData,cartCount,products})
+    res.render('user/wishlist',{admin:false,user:true,userData,cartCount,wishlistCount,products})
     }else{
     res.render('user/userLogin',{user:false,admin:false,userData})
     }
