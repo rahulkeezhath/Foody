@@ -17,7 +17,7 @@
           <td> <a href="/admin/orderId?id=<%= orderItems[i]._id %>"> <%= orderItems[i]._id %></td></a>
             <td><%= orderItems[i].date.toLocaleDateString() %> <br>
                 <%= orderItems[i].date.toLocaleTimeString() %></td>
-            <td><%= orderItems[i].userDetails.Name %></td>
+            <td><%= orderItems[i].deliveryDetails.name %></td>
             <td><%= orderItems[i].status %></td>
             <td><%= orderItems[i].paymentMethod %></td>
             <td><%= orderItems[i].totalAmount %></td>

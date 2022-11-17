@@ -31,7 +31,7 @@ module.exports={
             let {
                 createHmac,
               } = require('node:crypto');
-            let hmac = createHmac('sha256', process.env.KeySecret);   
+            let hmac = createHmac('sha256', process.env.Razorpay_KeySecret);   
             console.log("aaa",details.payment); 
             console.log("aaa",details.payment.razorpay_payment_id); 
 
