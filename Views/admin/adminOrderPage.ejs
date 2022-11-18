@@ -1,5 +1,6 @@
+<section class="home-section mt-5 p-5">
 <div class="container"> 
-    <table class="table table-bordered home-section mt-5 p-5">
+    <table class="table table-bordered" id="orderTable">
         <thead class="bg-secondary">
           <tr>
             <th scope="col">OrderId</th>
@@ -28,12 +29,14 @@
         </tbody>
       </table>
 </div>
+</section>
 
 
-
-
-
-
+<script>
+  $(document).ready( function () {
+    $('#orderTable').DataTable();
+  } );
+  </script>
 
 
 
