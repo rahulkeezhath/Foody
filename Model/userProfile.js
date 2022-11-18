@@ -1,42 +1,29 @@
 const db = require('../config/connection')
 const collection = require('../config/collection')
 const { response } = require('express')
+const { ObjectId } = require('mongodb')
 
 module.exports = {
-    updateProfile:(userId,data)=>{
-        return new Promise(async(resolve,reject)=>{
-           await db.get().collection(collection.USER_CREDENTIALS).updateOne({_id:userId},
-                
-                {
-                    $set:{
-                        name:data.name,
-                        gender:data.gender
-                    }
-                }
-                ).then((response)=>{
-                    resolve(response)
-                })
-        })
-    },
-    getUserDetails:(userId)=>{
-        return new Promise(async(resolve,reject)=>{
-            let userData = await db.get().collection(collection.USER_CREDENTIALS).findOne({_id:userId})
-            resolve(userData)
-        })
-    },
-    editEmailPhone:(userId,data)=>{
+    updateProfile:(userData,data)=>{
         return new Promise((resolve,reject)=>{
-            db.get().collection(collection.USER_CREDENTIALS).updateOne({_id:userId},
+            db.get().collection(collection.USER_CREDENTIALS).updateOne({_id:ObjectId(userData._id)},
                 
                 {
                     $set:{
-                        mobileNo:data.mobile,
-                        email:data.email
+                        name:data.Name,
+                        phoneNumber:data.Mobile,
+                        email:data.Email
                     }
                 }
                 ).then((response)=>{
                     resolve(response)
                 })
+        })
+     },
+    getUserDetails:(userID)=>{
+        return new Promise(async(resolve,reject)=>{
+            let userData = await db.get().collection(collection.USER_CREDENTIALS).findOne({_id:ObjectId(userID)})
+            resolve(userData)
         })
     }
 }

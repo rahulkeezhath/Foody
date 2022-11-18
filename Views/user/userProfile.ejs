@@ -11,7 +11,7 @@
                     </div>
                     <div class="username">
                         <p class="mb-0">Welcome</p>
-                        <span><%= userData.name %></span>
+                        <span><%= userDetails.name %></span>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                         <!-------------------------Profile Information Started-------------------------->
                         <div class="d-flex" style="align-items: center;">
                             <span class="title">Profile Information</span>                        
-                            <a href="#" id="proEditBtn" class="edit" onclick="editProfile()">Edit</a>
+                            <a href="/editProfile" id="proEditBtn" class="edit" onclick="editProfile()">Edit</a>
                         <a href="#" id="proCaneclBtn" class="edit" onclick="cancelBtn()" style="display: none;">Cancel</a>
                         </div><br>
                         <form action="" id="profileUpdateForm">
@@ -66,7 +66,7 @@
                                         <div class="field" style="width: 270px; padding-right: 12px;">
                                             <label for="" class="form-label">Name</label>
                                             <input disabled type="text" class="form-control" id="name" name="name"
-                                                style="width: 100%;" value="<%= userData.name %>">
+                                                style="width: 100%;" value="<%= userDetails.name %>">
                                         </div>
                                         <div id="proBtn" style="display: none;">
                                             <label for=""></label>
@@ -75,7 +75,7 @@
                                         </div>
                                     </div><br>
 
-                                    <div class="field" style="width: 270px; padding-right: 12px;">
+                                    <!-- <div class="field" style="width: 270px; padding-right: 12px;">
                                         <label for="" class="form-label">Your Gender</label></div>
 
                                     <div class="form-check form-check-inline">
@@ -89,7 +89,7 @@
                                       <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
                                         <label class="form-check-label" for="inlineRadio3">Other</label>
-                                      </div>
+                                      </div> -->
                                 </div>
                             </div>
                         </form><br>
@@ -97,9 +97,7 @@
 
                         <!-------------------------Email & Mobile Information Started-------------------------->
                         <div class="d-flex" style="align-items: center;">
-                        <span class="title">Email & Mobile Information</span>
-                        <a href="#" id="emailEditBtn" class="edit" onclick="emailEdit()">Edit</a>
-                        <a href="#" id="emailCancelBtn" class="edit" style="display: none;" onclick="emailCancel()">Cancel</a>
+                        <span class="title">Mobile & Email Information</span>
                         </div><br>
                         <form action="" id="emailUpdateForm">
                             <div class="pb-2" style="width: 100%;">
@@ -108,12 +106,12 @@
                                         <div class="field" style="width: 270px; padding-right: 12px;">
                                             <label for="" class="form-label">Mobile No.</label>
                                             <input disabled type="number" class="form-control" id="mobile_No"
-                                                name="mobile_No" style="width: 100%;" value="<%= userData.phoneNumber %>">
+                                                name="mobile_No" style="width: 100%;" value="<%= userDetails.phoneNumber %>">
                                         </div>
                                         <div class="field" style="width: 270px; padding-right: 12px;">
                                             <label for="" class="form-label">Email</label>
                                             <input disabled type="email" class="form-control" id="user_Email"
-                                                name="user_Email" style="width: 100%;" value="<%= userData.email %>">
+                                                name="user_Email" style="width: 100%;" value="<%= userDetails.email %>">
                                         </div>
                                         <div>
                                             <label for=""></label>

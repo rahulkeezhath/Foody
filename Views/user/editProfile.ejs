@@ -1,0 +1,76 @@
+<section class="vh-100  text-white" style="background-color: rgb(11, 129, 111);">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6 text-black ">
+          
+          <div
+            class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5" >
+           <div class="m-5 p-5">
+            <form action="/editUserDetails" method="post" onsubmit=" return profileValidation()">
+             <label for="otp verification"><h5 class="text-white">Name</h5></label><br>
+             <input type="text" id="name" name="Name" placeholder="New Name" aria-label="Large" class="form-control" >
+             <span id="nameError"></span><br>       
+
+             <label for="otp verification"><h5 class="text-white">Mobile No</h5></label><br>
+             <input type="number" id="mobile" name="Mobile" placeholder="New Mobile No." name="mobile" aria-label="Large" class="form-control" >
+             <span id="mobileError"></span><br>
+             
+
+             <label for="otp verification"><h5 class="text-white">Email Address</h5></label><br>
+             <input type="email" id="email" name="Email" placeholder=" New Email" aria-label="Large" class="form-control" >
+             <span id="emailError"></span><br>
+            
+             <button type="submit" class="btn btn-success rounded-pill">Update</button>
+
+            </form>
+           </div>
+          </div>
+        </div>
+        <div class="col-sm-6 px-0 d-none d-sm-block">
+          <img src="../user/img/bcksignup.jpg" alt="Profile image" class="w-100 vh-100" style="object-fit: cover; object-position: left"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    function profileValidation(){
+        let error = 0
+        let name = document.getElementById('name').value.trim()
+        let mobile = document.getElementById('mobile').value.trim()
+        let email = document.getElementById('email').value.trim()
+
+        if(name ==''){
+            document.getElementById('nameError').innerHTML="Name required"
+            error=1
+        }else if(name.length<3){
+            document.getElementById('nameError').innerHTML="Enter atleast 3 character"
+            error=1
+        }else{
+            document.getElementById('nameError').innerHTML=""
+        }
+
+        if(mobile == ''){
+            document.getElementById('mobileError').innerHTML="Mobile Number Required"
+            error=1
+        }else if(mobile.length<10){
+            document.getElementById('mobileError').innerHTML="Enter atleast 10 Number"
+            error=1
+        }else{
+            document.getElementById('mobileError').innerHTML=""
+        }
+
+        if(email ==''){
+            document.getElementById('emailError').innerHTML="Email required"
+            error=1
+        }else{
+            document.getElementById('emailError').innerHTML=""
+        }
+
+        if(error==1){
+            return false
+        }
+
+    }
+  </script>

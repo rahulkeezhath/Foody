@@ -29,7 +29,9 @@ router.get('/about',userSessionCheck.userSessionChecker,userNavButtons.aboutPage
 router.get('/contact',userSessionCheck.userSessionChecker,userNavButtons.contactPage)
 
 //Profile router
-router.get('/profile',userProfile.profilePage)
+router.get('/profile',userSessionCheck.userSessionChecker,userProfile.profilePage)
+router.get('/editProfile',userSessionCheck.userSessionChecker,userProfile.editProfile)
+router.post('/editUserDetails',userSessionCheck.userSessionChecker,userProfile.updateProfile)
 
 //Cart router
 router.get('/cart',userSessionCheck.userSessionChecker,userCart.userCart)
