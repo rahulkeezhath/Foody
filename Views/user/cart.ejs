@@ -76,7 +76,7 @@
 								 <button class="quantity form-control input-number" onclick="changeQuantity('<%= values._id %>','<%= values.products._id %>',1,'<%= userData._id %>')" >+</button>
 							  </div>
 						  </td>
-							<!-- <td class="total">Rs.<%= values.products.sellingPrice %></td> -->
+							<!-- <td > <span id="total" class="total">Rs.<%= TotalPrice %></span> </td> -->
 						  </tr><!-- END TR-->
 						<% } %>
 						<% } else { %>
@@ -216,6 +216,7 @@
 					document.getElementById(productId).innerHTML=quantity+count
 					document.getElementById('totalAmount').innerHTML= response.result
 					document.getElementById('totalPrice').innerHTML = response.result
+					document.getElementById('total').innerHTML = response.done
 				}
 			}    
 		})

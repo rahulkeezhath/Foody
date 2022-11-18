@@ -1,5 +1,5 @@
   <!-- Button trigger modal -->
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end m-5">
+  <div class=" d-flex justify-content-end mt-5 mb-5">
   <a href="/admin/addProducts" class="btn btn-primary">Add Product</a>
   </button>
   </div>
@@ -39,19 +39,20 @@
     </tbody>
   </table>
     </div>
-  </section>
+    </section>
+  
   
   <script>
     let sidebar = document.querySelector(".sidebar");
-   let sidebarBtn = document.querySelector(".sidebarBtn");
-   sidebarBtn.onclick = function() {
+ let sidebarBtn = document.querySelector(".sidebarBtn");
+ sidebarBtn.onclick = function() {
    sidebar.classList.toggle("active");
    if(sidebar.classList.contains("active")){
-   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right"); 
-   }else
+   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+ }else
    sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-   }
-   </script>
+ }
+  </script>
 
 
 <script>

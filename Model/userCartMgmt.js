@@ -160,6 +160,59 @@ module.exports = {
             resolve(response.totalAmount)
         }
         })
+    },  
+    TotalPrice:(userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let userCart = await db.get().collection(collection.ADD_CART).findOne({user:ObjectId(userId)})
+            if(userCart.products.length >0){
+            const TotalPrice = await db.get().collection(collection.ADD_CART).aggregate([
+                {
+                    $match:{user:ObjectId(userId)}
+                },
+                {
+                    $unwind:'$products'
+                },
+                {
+                    $project:{
+                        item:'$products.item',
+                        quantity:'$products.quantity'
+                    }
+                },
+                {
+                    
+                    $lookup:{
+                        from: collection.ADD_PRODUCT,
+                        localField: 'item',
+                        foreignField: "_id",
+                        as: "products"
+                    }
+                },
+                {
+                    $project:{
+                        item:1,quantity:1,products:{$arrayElemAt:['$products',0]} 
+                    }
+                },
+                {
+                    $project:{ 
+                        _id:"",
+                        total:{
+                            $sum:{
+                                $multiply:[
+                                    "$quantity","$products.sellingPrice"
+                                ]
+                            }
+                        }
+                    }
+                }
+
+            ]).toArray()
+            response.TotalPrice = TotalPrice[0].total
+            resolve(response.TotalPrice)
+        }else{
+            response.TotalPrice = 0
+            resolve(response.TotalPrice)
+        }
+        })
     },
     placeOrder:(order,products,total)=>{
         return new Promise((resolve,reject)=>{
