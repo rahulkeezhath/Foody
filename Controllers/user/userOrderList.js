@@ -22,13 +22,15 @@ const orderProducts = async(req,res)=>{
 }
 
 const viewOrderProducts = async(req,res)=>{ 
+    let id = req.query
     let userData = req.session.user
     let cartCount = null
     if(req.session.user){
     cartCount = await userCartMgmt.getCartCount(req.session.user._id)
     }
-    let orderItems = await userOrderMgmt.getOrderProducts(req.query.id)
-    res.render('user/viewOrderProducts',{admin:false,user:true,userData,cartCount,orderItems})
+    userOrderMgmt.getOrderProducts(id).then((orderItem)=>{
+        res.render('user/viewOrderProducts',{admin:false,user:true,userData,cartCount,orderItem})
+    })
 }
 
 

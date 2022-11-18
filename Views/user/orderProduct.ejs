@@ -36,10 +36,7 @@
                   <td><%= values.paymentMethod %></td>
                   <td><%= values.status %></td>
                 <td>
-                  <button type="button" class="btn btn-warning"
-                  data-bs-toggle="modal"
-                  data-bs-target="#addCategory"
-                  onclick="View('<%=values._id%>')">View Products</button>
+                  <a href="/viewOrderProducts?id=<%=values._id %>" class="btn btn-warning"> View products </a>
                 </td>
             </tr>
             <% } %>
@@ -52,20 +49,6 @@
       </div>
   </div>
 </div>
-
-<script>
-  function View(orderId){
-    fetch('/viewOrderProducts',{
-      method:'post',
-      headers:{'Content-Type': 'application/json'},
-      body:JSON.stringify({orderId})
-    }).then(data=>{
-        
-    })
-  }
-
-
-</script>
 
 
 

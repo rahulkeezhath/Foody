@@ -22,7 +22,7 @@ module.exports = {
                 {
                     $project:{
                         item:'$products.item',
-                        quantity:'$products.qunatity'
+                        quantity:'$products.quantity'
                     }
                 },
                 {
@@ -40,6 +40,7 @@ module.exports = {
                 }
             ]).toArray()
             resolve(orderItems)
+            console.log(orderItems);
         })
-    }
+    }    
 }
