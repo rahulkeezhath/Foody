@@ -32,7 +32,7 @@ const changeProductQuantity = (req,res,next)=>{
             userCartMgmt.TotalPrice(userData._id).then((done)=>{
             let totalValue = result.totalAmount
             let TotalPrice = done.TotalPrice
-            res.json({response,result,totalValue,TotalPrice})
+            res.json({response,result,totalValue,TotalPrice,done})
         })
         })
      

@@ -1,4 +1,3 @@
-const e = require('express')
 const { response } = require('express')
 const { ObjectId } = require('mongodb')
 const collection = require('../config/collection')
@@ -86,6 +85,7 @@ module.exports = {
         })
     },
     changeQuantity:(details)=>{
+        console.log(details);
         details.count = parseInt(details.count)
         details.quantity = parseInt(details.quantity)
 

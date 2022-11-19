@@ -18,7 +18,7 @@ app.use(
   session({
     secret: "123",
     saveUninitialized: true,
-    cookie: { maxAge: 600000 },
+    cookie: { maxAge: 60000000 },
     resave: false,
   })
 );

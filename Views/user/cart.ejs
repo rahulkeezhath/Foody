@@ -40,7 +40,7 @@
 			<div class="row">
 			<div class="col-md-12 ftco-animate">
 				<div class="cart-list">
-					<table class="table" id="cartTable">
+					<table class="table">
 						<thead class="thead-primary">
 						  <tr class="text-center">
 							<th>&nbsp;</th>
@@ -49,7 +49,7 @@
 							<th>Product name</th>
 							<th>Price</th>
 							<th>Quantity</th>
-							<!-- <th>Total</th> -->
+							<th>Total</th>
 						  </tr>
 						</thead>
 						<tbody>
@@ -75,9 +75,9 @@
 								 <span class="quantity form-control input-number p-3" id="<%= values.products._id %>"><%= values.quantity %></span>
 								 <button class="quantity form-control input-number" onclick="changeQuantity('<%= values._id %>','<%= values.products._id %>',1,'<%= userData._id %>')" >+</button>
 							  </div>
-						  </td>
-							<!-- <td > <span id="total" class="total">Rs.<%= TotalPrice %></span> </td> -->
-						  </tr><!-- END TR-->
+							</td>
+							<td > Rs.<span id="total" class="total"><%= TotalPrice %></span> </td>
+						</tr><!-- END TR-->
 						<% } %>
 						<% } else { %>
 							<tr>
@@ -195,6 +195,7 @@
 
 <script>
 	function changeQuantity(cartId,productId,count,userData){
+		console.log(cartId,productId,count,userData	);
 		let quantity = parseInt(document.getElementById(productId).innerHTML)
 		count = parseInt(count)
 		$.ajax({
@@ -217,16 +218,11 @@
 					document.getElementById('totalAmount').innerHTML= response.result
 					document.getElementById('totalPrice').innerHTML = response.result
 					document.getElementById('total').innerHTML = response.done
+					console.log(response.done);
 				}
 			}    
 		})
 	}
-
-	$(document).ready( function () {
-    $('#cartTable').DataTable();
-} );
-
-
 </script>
 
 

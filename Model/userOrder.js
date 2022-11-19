@@ -10,6 +10,21 @@ module.exports = {
             resolve(orders)
         })
     },
+    getOneOrderProducts:(orderId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let orderItems = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match:{_id:ObjectId(orderId)}
+                },
+                {
+                    $unwind:'$products'
+                }
+            ]).toArray()
+            resolve(orderItems)
+            console.log("vihdhcjh",orderItems);
+        })
+    },
+
     getOrderProducts:(orderId)=>{
         return new Promise(async(resolve,reject)=>{
             let orderItems = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
