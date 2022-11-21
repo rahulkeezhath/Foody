@@ -13,12 +13,13 @@ const orderSuccess = async(req,res)=>{
 
 const orderProducts = async(req,res)=>{
     let userData = req.session.user
+    let totalValue = req.query.finalTotal
     let cartCount = null
     if(req.session.user){
     cartCount = await userCartMgmt.getCartCount(req.session.user._id)
     }
     let orders = await userOrderMgmt.getUserOrders(req.session.user._id)
-    res.render('user/orderProduct',{user:true,admin:false,userData,cartCount,orders})
+    res.render('user/orderProduct',{user:true,admin:false,userData,totalValue,cartCount,orders})
 }
 
 const viewOrderProducts = async(req,res)=>{ 

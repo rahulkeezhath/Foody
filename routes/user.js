@@ -55,9 +55,10 @@ router.get('/deleteWhislistProduct/',userSessionCheck.userSessionChecker,userWis
 
 //Checkout router
 router.get('/checkout',userSessionCheck.userSessionChecker,userCheckout.userCheckout)
-router.get('/placeOrder',userSessionCheck.userSessionChecker,userCheckout.placeOrder)
+router.get('/cart/proceedToCheckout',userSessionCheck.userSessionChecker,userCheckout.placeOrder)
 router.post('/placeOrder',userSessionCheck.userSessionChecker,userCheckout.payment)
 router.post('/verifyPayment',userSessionCheck.userSessionChecker,userCheckout.verifyPayment)
+router.post('/cart/proceedToCheckout',userSessionCheck.userSessionChecker,userCheckout.displayCheckoutPage)
 
 //Order router
 router.get('/order-success',userSessionCheck.userSessionChecker,userOrder.orderSuccess)

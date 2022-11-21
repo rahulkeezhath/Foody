@@ -12,6 +12,7 @@ const userCart = async(req,res)=>{
     if(products.length>0){
         totalValue = await userCartMgmt.getTotalAmount(req.session.user._id)
         TotalPrice = await userCartMgmt.TotalPrice(req.session.user._id)
+        console.log(totalValue);
     }
     res.render('user/cart',{admin:false,user:true,userData,products,cartCount,totalValue,TotalPrice})
     }else{

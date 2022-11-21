@@ -1,6 +1,7 @@
 const { response } = require("express")
 const userCartMgmt = require('../../Model/userCartMgmt')
 const razorpayMgmt = require('../../Model/razorpay')
+const userCouponMgmt = require('../../Model/userCoupon')
 
 const userCheckout = async(req,res)=>{
   let userData = req.session.user
@@ -14,12 +15,14 @@ const userCheckout = async(req,res)=>{
 
 const placeOrder = async(req,res)=>{
   let userData = req.session.user
+  let totalValue = req.query.finalTotal
   let cartCount = null
   if(req.session.user){
   cartCount = await userCartMgmt.getCartCount(req.session.user._id)
   let products=  await userCartMgmt.getCartProducts(req.session.user._id)
-  let totalAmount = await userCartMgmt.getTotalAmount(req.session.user._id)
-  res.render('user/checkout',{admin:false,user:true,userData,cartCount,products,totalAmount})
+  // let totalAmount = await userCartMgmt.getTotalAmount(req.session.user._id)
+
+  res.render('user/checkout',{admin:false,user:true,userData,cartCount,products,totalValue})
   }
 }
 
@@ -53,9 +56,32 @@ const payment = async(req,res)=>{
   })
  }
 
+
+ const displayCheckoutPage = async(req,res)=>{
+  let finalTotal = req.body.finalTotal
+  let details = req.body
+  if(details.couponCode===''){
+    finalTotal = details.finalTotal +(5/100)*details.finalTotal
+    res.json(finalTotal)
+  }else{
+    let couponDetails = await userCouponMgmt.getCouponDetails(details.couponCode)
+    if(couponDetails){
+      await userCouponMgmt.getDiscount(couponDetails,details.totalValue).then((response)=>{
+        finalTotal = response.discountedTotal
+        res.json(response.discountedTotal)
+      })
+    }else{
+      finalTotal = details.totalValue + (5/100)*details.totalValue
+      res.json(finalTotal)
+    }
+  }
+  
+ }
+
 module.exports = {
   userCheckout,
   placeOrder,
   payment,
-  verifyPayment
+  verifyPayment,
+  displayCheckoutPage
 }

@@ -149,8 +149,8 @@
 						</span>
 					</p>
 				</div>
-				<p><a href="/placeOrder" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
-				<!-- <button class="btn btn-primary py-3 px-4" onclick="proceedToCheckout('<%= TOTAL %>')" >Proceed to Checkout</button> -->
+				<!-- <p><a href="/placeOrder" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p> -->
+				<button class="btn btn-success py-3 px-4" onclick="proceedToCheckout('<%= totalValue %>')" >Proceed to Checkout</button>
 			</div>
 		</div>
 		</div>
@@ -252,15 +252,19 @@
 		})
 	}
 
-	// function proceedToCheckout(TOTAL){
-	// 	let couponCode = ''
-	// 	couponCode = document.getElementById('couponCode').value.toUpperCase()
-	// 	fetch('/cart/proceedToCheckout',{
-	// 		method:'post',
-	// 		headers:{'Content-Type':'application/jso'},
-	// 		body:JSON.stringify({couponCode,TOTAL})
-	// 	})
-	// }
+	function proceedToCheckout(totalValue){
+		let couponCode = ''
+		couponCode = document.getElementById('couponCode').value.toUpperCase()
+		fetch('/cart/proceedToCheckout',{
+			method:'post',
+			headers:{'Content-Type':'application/json'},
+			body:JSON.stringify({couponCode,totalValue})
+		}).then(res => res.json()).then((data)=>{
+			console.log(('final total',data));
+			window.alert(data)
+			location.href='/cart/proceedToCheckout?finalTotal='+data
+		})
+	}
 
 
 </script>
