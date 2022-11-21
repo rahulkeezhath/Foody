@@ -2,6 +2,7 @@ const { response } = require('express')
 const { ObjectId } = require('mongodb')
 const collection = require('../config/collection')
 const db = require('../config/connection')
+const { use } = require('../routes/user')
 
 module.exports = {
     addToCart:(productId,userId)=>{
@@ -247,5 +248,15 @@ module.exports = {
             let cart = await db.get().collection(collection.ADD_CART).findOne({user:ObjectId(userId)})
             resolve(cart.products)
         })
-    }
+    },
+    deleteCartProduct:(item,userId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.ADD_CART)
+            .updateOne({user:ObjectId(userId)},
+            {$pull:{products:{item:ObjectId(item)}}}
+            ).then((response)=>{
+                resolve(response)
+            })
+        })
+            }
 }   

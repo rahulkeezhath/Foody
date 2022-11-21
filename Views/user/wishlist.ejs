@@ -27,7 +27,7 @@
                           <tbody>
                             <% let i=1; for(values of products) { %>
                             <tr class="text-center">
-                              <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                              <td class="product-remove"><a href="/deleteWhislistProduct?id=<%= values.products._id %>"><span class="ion-ios-close"></span></a></td>
                               
                               <td><%= i++ %></td>
 
@@ -35,7 +35,7 @@
                               
                               <td class="product-name">
                                   <h3><%= values.products.productName %></h3>
-                                  <p>Rs.<%= values.products.productDescription %></p>
+                                  <p><%= values.products.productDescription %></p>
                               </td>
                               <td class="price">Rs.<%= values.products.sellingPrice %></td>
                             </tr><!-- END TR-->

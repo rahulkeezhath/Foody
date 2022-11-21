@@ -37,6 +37,7 @@ router.post('/editUserDetails',userSessionCheck.userSessionChecker,userProfile.u
 router.get('/cart',userSessionCheck.userSessionChecker,userCart.userCart)
 router.get('/addToCart/:id',userSessionCheck.userSessionChecker,userCart.addToCart)
 router.post('/changeProductQuantity',userSessionCheck.userSessionChecker,userCart.changeProductQuantity)
+router.get('/deleteProduct/',userSessionCheck.userSessionChecker,userCart.deleteProduct)
 
 
 //SingleProduct router
@@ -48,6 +49,7 @@ router.get('/viewCategory',userShop.viewShop)
 //Wishlist router
 router.get('/wishlist',userSessionCheck.userSessionChecker,userWishlist.userWishlist)
 router.get('/addToWishlist/:id',userSessionCheck.userSessionChecker,userWishlist.addToWishlist)
+router.get('/deleteWhislistProduct/',userSessionCheck.userSessionChecker,userWishlist.deleteWishlistProduct)
 
 //Checkout router
 router.get('/checkout',userSessionCheck.userSessionChecker,userCheckout.userCheckout)

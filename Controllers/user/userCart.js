@@ -39,10 +39,20 @@ const changeProductQuantity = (req,res,next)=>{
     })
 }
 
+const deleteProduct = (req,res)=>{
+    let userData = req.session.user._id
+    let item = req.query.item
+    userCartMgmt.deleteCartProduct(item,userData).then((response)=>{
+        res.redirect('/cart')
+    })
+
+}
+
 
 
 module.exports = {
     userCart,
     addToCart,
-    changeProductQuantity
+    changeProductQuantity,
+    deleteProduct
 }

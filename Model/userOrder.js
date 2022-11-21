@@ -21,7 +21,6 @@ module.exports = {
                 }
             ]).toArray()
             resolve(orderItems)
-            console.log("vihdhcjh",orderItems);
         })
     },
 
@@ -55,7 +54,6 @@ module.exports = {
                 }
             ]).toArray()
             resolve(orderItems)
-            console.log(orderItems);
         })
     }    
 }

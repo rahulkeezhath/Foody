@@ -1,6 +1,7 @@
 const db = require('../config/connection')
 const collection = require('../config/collection')
 const { ObjectId } = require('mongodb')
+const { response } = require('express')
 
 module.exports={
     addToWishlist:(productId,userId)=>{
@@ -81,6 +82,17 @@ module.exports={
                 count = wishlist.products.length
             }
             resolve(count)
+        })
+    },
+    deleteWishlistProduct:(userId,productId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.ADD_WISHLIST).updateOne({user:ObjectId(userId)},
+            {
+                $pull: {products:{item:ObjectId(productId)}}
+            }
+            ).then((response)=>{
+                resolve(response)
+            })
         })
     }
 }

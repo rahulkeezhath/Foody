@@ -1,0 +1,78 @@
+<section class="home-section mt-5">
+<main class="main-content">
+    <div class="product-grid">
+        <div class="card">
+            <div class="header">
+                <h3>Add Coupon</h3>
+            </div>
+            <div class="card-body">
+                <div>
+                    <form action="" >
+                        <div class="mb-3 d-flex">
+                            <div style="width: 25%;" class="me-2">
+                                <label for="" class="form-label">Offer Name</label>
+                                <input type="text" class="form-control" name="offerName"
+                                    style="text-transform: capitalize;">
+                            </div>
+                            <div style="width: 25%;" class="me-2">
+                                <label for="" class="form-label">Coupon Code</label>
+                                <input type="text" class="form-control" name="couponCode"
+                                    style="text-transform: uppercase;">
+                            </div>
+                            <div style="width: 25%;" class="ms-2 me-2">
+                                <label for="" class="form-label">Offer Type</label>
+                                <select id="offerType" class="form-select" name="offerType">
+                                    <option value=""></option>
+                                    <option value="Flat">Flat</option>
+                                    <option value="Percentage">Percentage</option>
+                                </select>
+                            </div>
+                            <div style="width: 25%;" class="ms-2">
+                                <label for="" class="form-label">Method</label>
+                                <select id="" class="form-select" name="offerMethod">
+                                    <option value=""></option>
+                                    <option value="Voucher">Voucher</option>
+                                    <option value="Coupon">Coupon</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <div style="width: 25%;" class="me-3">
+                                <label for="" class="form-label">Start Date & Time</label>
+                                <input type="date" class="form-control"  name="startDate">
+                            </div>
+                            <div style="width: 25%;" class="me-2">
+                                <label for="" class="form-label">End Date & Time</label>
+                                <input type="date" class="form-control"  name="endDate">
+                            </div>
+                            <div style="width: 25%;" class="ms-2 me-2">
+                                <label for="" class="form-label">Discount Amount</label>
+                                <input type="number" class="form-control" id="couponAmount" disabled
+                                    name="discountAmount">
+                            </div>
+                            <div style="width: 25%;" class="me-2">
+                                <label for="" class="form-label">Discount Percentage</label>
+                                <input type="number" class="form-control" id="couponPercentage" disabled
+                                    name="discountPercentage">
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex">
+                            <div style="width: 50%;" class="me-2">
+                                <label for="" class="form-label">Minimum Amount in the Cart</label>
+                                <input type="number" class="form-control" name="minimumAmount">
+                            </div>
+                            <div style="width: 50%;" class="me-2">
+                                <label for="" class="form-label">Maximum Total Usage</label>
+                                <input type="number" class="form-control" name="totalUsage">
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-success">SAVE</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</section>

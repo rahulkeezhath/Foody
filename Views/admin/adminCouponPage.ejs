@@ -1,0 +1,112 @@
+<section class="home-section mt-5">
+<main class="main-content">
+    <div class="container-fluid coupon">
+        <div class="row d-flex justify-content-end mt-5 mb-5">
+            <a href="/admin/couponCreate" class="btn btn-primary " style="width: auto;">Create Coupon</a>
+        </div>
+    </div>
+    <div class="card mt-2 couponTable">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table width="100%" id="couponTable">
+                    <thead>
+                        <tr>
+                            <th>Offer Name</th>
+                            <th>Coupon Code</th>
+                            <th>Mode</th>
+                            <th>Offer Type</th>
+                            <th>Amount</th>
+                            <th>Per(%)</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Coupon Status</th>
+                            <th>Usage</th>
+                            <th>Action</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td><a href="">
+                                    </a></td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                               </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <span for="" style="cursor: pointer; color: #0d6efd;"
+                                        >Delete</span>
+                                </td>
+                                <td>
+                                    <span for="" style="cursor: pointer; color: #0d6efd;"
+                                      >update</span>
+                                </td>
+                            </tr>
+                          
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Status Update</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <input type="text" id="couponID" style="display: none;">
+                <div class="modal-body">
+                    <select name="status" id="statusUpdate" class="form-select">
+                        <option value="">Select Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Active">Active</option>
+                        <option value="Cancelled">Cancelled</option>
+                        <option value="Expired">Expired</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
+                    <button type="button" class="btn btn-primary" onclick="statusUpdate()">SAVE</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</main>
+
+
+<!-- <script>
+     $(document).ready(function () {
+        $('#couponTable').DataTable();
+    });
+</script> -->
+
+<script>
+  let sidebar = document.querySelector(".sidebar");
+ let sidebarBtn = document.querySelector(".sidebarBtn");
+ sidebarBtn.onclick = function() {
+ sidebar.classList.toggle("active");
+ if(sidebar.classList.contains("active")){
+ sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right"); 
+ }else
+ sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+ }
+ </script>

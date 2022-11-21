@@ -7,6 +7,7 @@ const addProduct = require('../Controllers/admin/adminProductController')
 const adminUser = require('../Controllers/admin/adminUserController')
 const adminBanner = require('../Controllers/admin/adminBannerController')
 const adminOrder = require('../Controllers/admin/adminOrderController')
+const adminCoupon = require('../Controllers/admin/adminCouponController')
 const upload = require('../Middlewares/multer')
 const { route } = require('./user')
 const  adminSessionCheck  = require('../Middlewares/sessionMiddleware')
@@ -59,9 +60,12 @@ router.post('/addBanner',adminSessionCheck.adminSessionChecker,upload.single('pr
 router.delete('/deleteBanner',adminSessionCheck.adminSessionChecker,adminBanner.deleteBanner)
 
 // Order router
-
 router.get('/adminOrderPage',adminSessionCheck.adminSessionChecker,adminOrder.adminOrderPage)
 
+
+//Coupon router
+router.get('/coupon',adminSessionCheck.adminSessionChecker,adminCoupon.couponPage)
+router.get('/couponCreate',adminSessionCheck.adminSessionChecker,adminCoupon.createPage)
 
 
 module.exports = router

@@ -23,9 +23,16 @@ const addToWishlist = (req,res)=>{
     })
 }
 
-
+const deleteWishlistProduct = (req,res)=>{
+    let userData = req.session.user._id
+    let productId = req.query.id
+    userWishlistMgmt.deleteWishlistProduct(userData,productId).then((response)=>{
+        res.redirect('/wishlist')
+    })
+}
 
 module.exports = {
     userWishlist,
-    addToWishlist
+    addToWishlist,
+    deleteWishlistProduct
 }

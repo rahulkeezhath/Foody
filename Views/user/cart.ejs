@@ -56,7 +56,7 @@
 							<% if(products.length>=0) { %>
 							<% let i=1; for(values of products) { %> 
 						  <tr class="text-center">
-							<td class="product-remove"><a href="/deleteProduct?id=<%=values._id %>"><span class="ion-ios-close"></span></a></td>
+							<td class="product-remove"><a href="/deleteProduct?item=<%=values.item %>"><span class="ion-ios-close"></span></a></td>
 							
 							<td><%= i++ %></td>
 
@@ -223,6 +223,11 @@
 			}    
 		})
 	}
+
+
+
+
+
 </script>
 
 
