@@ -1,24 +1,37 @@
 const { response } = require('express')
-const couponMgmt = require('../../Model/coupon')
+const couponMgmt = require('../../Model/admincoupon')
 
 
 const couponPage = (req,res)=>{
-    res.render("admin/adminCouponPage",{admin:true,user:false,title:"COUPON CONTROL PAGE"})
-}
-
-const createPage = (req,res)=>{
-    res.render('admin/adminCreateCouponPage',{admin:true,user:false,title:"CREATE COUPON"})
+    couponMgmt.displayCoupon().then((availableCoupons)=>{
+        res.render("admin/adminCouponPage",{admin:true,user:false,title:"COUPON CONTROL PAGE",availableCoupons})
+    })
+}   
+const createCouponPage = (req,res)=>{
+     res.render('admin/adminCreateCouponPage',{admin:true,user:false,title:"CREATE COUPON"})
 }
 
 const addCoupon = (req,res)=>{
-    let couponData = req.body
-    couponMgmt.addCoupon(couponData).then((response)=>{
-        res.json(response)
+    console.log(req.body);
+   couponMgmt.addCoupon(req.body).then(()=>{
+    couponMgmt.displayCoupon().then((availableCoupons)=>{
+        res.render('admin/adminCouponPage',{admin:true,user:false,title:"CREATE COUPON",availableCoupons})
+    })
+   })
+}
+
+const deleteCoupon = (req,res)=>{
+    let couponId = req.query.id
+    couponMgmt.deleteCoupon(couponId).then(()=>{
+        couponMgmt.displayCoupon().then((availableCoupons)=>{
+            res.render("admin/adminCouponPage",{admin:true,user:false,title:"COUPON CONTROL PAGE",availableCoupons})
+        })
     })
 }
 
 module.exports = {
     couponPage,
-    createPage,
-    addCoupon   
+    createCouponPage,
+    addCoupon,
+    deleteCoupon   
 }

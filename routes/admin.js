@@ -64,8 +64,9 @@ router.get('/adminOrderPage',adminSessionCheck.adminSessionChecker,adminOrder.ad
 
 
 //Coupon router
-router.get('/coupon',adminSessionCheck.adminSessionChecker,adminCoupon.couponPage)
-router.get('/couponCreate',adminSessionCheck.adminSessionChecker,adminCoupon.createPage)
+router.get('/adminCoupon',adminSessionCheck.adminSessionChecker,adminCoupon.couponPage)
+router.get('/adminAddCoupon',adminSessionCheck.adminSessionChecker,adminCoupon.createCouponPage)
+router.post('/adminAddCoupon',adminSessionCheck.adminSessionChecker,adminCoupon.addCoupon)
 
 
 module.exports = router

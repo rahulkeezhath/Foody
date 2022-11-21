@@ -10,6 +10,7 @@ const userSessionCheck = require('../Middlewares/sessionMiddleware')
 const userOrder = require('../Controllers/user/userOrderList')
 const userProfile = require('../Controllers/user/userprofile')
 const userNavButtons = require('../Controllers/user/navButtons')
+const userCoupon = require('../Controllers/user/userCoupon')
 
 
 // Login router
@@ -38,6 +39,7 @@ router.get('/cart',userSessionCheck.userSessionChecker,userCart.userCart)
 router.get('/addToCart/:id',userSessionCheck.userSessionChecker,userCart.addToCart)
 router.post('/changeProductQuantity',userSessionCheck.userSessionChecker,userCart.changeProductQuantity)
 router.get('/deleteProduct/',userSessionCheck.userSessionChecker,userCart.deleteProduct)
+router.post('/cart/applyCoupon',userSessionCheck.userSessionChecker,userCoupon.applyCoupon)
 
 
 //SingleProduct router

@@ -2,68 +2,53 @@
 <main class="main-content">
     <div class="container-fluid coupon">
         <div class="row d-flex justify-content-end mt-5 mb-5">
-            <a href="/admin/couponCreate" class="btn btn-primary " style="width: auto;">Create Coupon</a>
+            <a href="/admin/adminAddCoupon" class="btn btn-primary " style="width: auto;">Create Coupon</a>
         </div>
     </div>
-    <div class="card mt-2 couponTable">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table width="100%" id="couponTable">
+</section>
+            <section class="home-section">
+            <div class="container mt-5">
+                <table width="100%" id="couponTable" class="table">
                     <thead>
                         <tr>
-                            <th>Offer Name</th>
-                            <th>Coupon Code</th>
-                            <th>Mode</th>
-                            <th>Offer Type</th>
-                            <th>Amount</th>
-                            <th>Per(%)</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Coupon Status</th>
-                            <th>Usage</th>
-                            <th>Action</th>
-                            <th>Status</th>
+                            <th scope="col">S.NO</th>
+                            <th scope="col">Coupon Name</th>
+                            <th scope="col">Coupon Code</th>
+                            <th scope="col">Discount</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                    
+                            <% for(var i=0; i<availableCoupons.length;i++) { %>
                             <tr>
-                                <td>
-                                    
+                                <td scope="row">
+                                    <%= i+1 %>
                                 </td>
-                                <td><a href="">
-                                    </a></td>
-                                <td>
-                                </td>
-                                <td>
+                                <td> 
+                                    <%= availableCoupons[i].couponName %>
                                 </td>
                                 <td>
+                                    <%= availableCoupons[i].couponCode %>
                                 </td>
                                 <td>
+                                    <%= availableCoupons[i].discount %>
                                 </td>
                                 <td>
+                                    <%= availableCoupons[i].startDate %>
                                 </td>
                                 <td>
+                                    <%= availableCoupons[i].endDate %>
                                 </td>
                                 <td>
-                               </td>
-                                <td>
-                                </td>
-                                <td>
-                                    <span for="" style="cursor: pointer; color: #0d6efd;"
-                                        >Delete</span>
-                                </td>
-                                <td>
-                                    <span for="" style="cursor: pointer; color: #0d6efd;"
-                                      >update</span>
+                                   
                                 </td>
                             </tr>
-                          
+                          <% } %>
                     </tbody>
                 </table>
             </div>
-        </div>
-    </div>
 </section>
     <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">

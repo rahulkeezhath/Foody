@@ -49,7 +49,7 @@
 							<th>Product name</th>
 							<th>Price</th>
 							<th>Quantity</th>
-							<th>Total</th>
+							<!-- <th>Total</th> -->
 						  </tr>
 						</thead>
 						<tbody>
@@ -76,7 +76,7 @@
 								 <button class="quantity form-control input-number" onclick="changeQuantity('<%= values._id %>','<%= values.products._id %>',1,'<%= userData._id %>')" >+</button>
 							  </div>
 							</td>
-							<td > Rs.<span id="total" class="total"><%= TotalPrice %></span> </td>
+							<!-- <td > Rs.<span id="total" class="total"><%= TotalPrice %></span> </td> -->
 						</tr><!-- END TR-->
 						<% } %>
 						<% } else { %>
@@ -94,16 +94,15 @@
 		<div class="row justify-content-end">
 			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
 				<div class="cart-total mb-3">
-					<h3>Coupon Code</h3>
+					<h3>Coupon Code</h3>	
 					<p>Enter your coupon code if you have one</p>
-					  <form action="#" class="info">
 			  <div class="form-group">
 				  <label for="">Coupon code</label>
-				<input type="text" class="form-control text-left px-3" placeholder="">
+				<input type="text" class="form-control text-left px-3" name="couponCode" id="couponCode" placeholder="Coupon Code">
 			  </div>
-			</form>
+			  <span id="couponMessage"></span>
 				</div>
-				<p><a href="" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
+				<p><a onclick="applyCoupon()" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
 			</div>
 			<!-- <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
 				<div class="cart-total mb-3">
@@ -135,19 +134,23 @@
 					</p>
 					<p class="d-flex">
 						<span>Delivery</span>
-						<span>Rs.0</span>
+						<span>5%</span>
 					</p>
-					<!-- <p class="d-flex">
+					<p class="d-flex">
 						<span>Discount</span>
-						<span>$3.00</span>
-					</p> -->
+						<span id="discountId">0</span>
+					</p>
 					<hr> 
 					<p class="d-flex total-price">
 						<span>Total</span>
-						Rs.<span id="totalAmount"><%= totalValue %></span>
+						Rs.<span id="totalAmount">
+							<% let finalTotal = totalValue+(5/100)*(totalValue) %>
+							<%= finalTotal  %>
+						</span>
 					</p>
 				</div>
 				<p><a href="/placeOrder" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+				<!-- <button class="btn btn-primary py-3 px-4" onclick="proceedToCheckout('<%= TOTAL %>')" >Proceed to Checkout</button> -->
 			</div>
 		</div>
 		</div>
@@ -223,9 +226,41 @@
 			}    
 		})
 	}
+	
 
+	function applyCoupon(){
+		let couponCode = document.getElementById('couponCode').value.toUpperCase()
+		let message = document.getElementById('couponMessage')
+		let discountlDisplay = document.getElementById("discountId")
+		let finalTotal = document.getElementById('totalAmount')
+		fetch('/cart/applyCoupon',{
+			method:'post',
+			headers:{'Content-Type':'application/json'},
+			body:JSON.stringify({couponCode})
+		}).then(res => res.json()).then(data=>{
 
+			if(data.couponStatus == true){
+				message.innerHTML == ''
+				discountlDisplay.innerHTML = data.discount
+				finalTotal.innerHTML = data.discountedTotal
+			}
+			else{
+				message.innerHTML = 'COUPON NOT ACCEPTABLE'
+				discountlDisplay.innerHTML = data.discount
+				finalTotal.innerHTML = data.discountedTotal
+			}
+		})
+	}
 
+	// function proceedToCheckout(TOTAL){
+	// 	let couponCode = ''
+	// 	couponCode = document.getElementById('couponCode').value.toUpperCase()
+	// 	fetch('/cart/proceedToCheckout',{
+	// 		method:'post',
+	// 		headers:{'Content-Type':'application/jso'},
+	// 		body:JSON.stringify({couponCode,TOTAL})
+	// 	})
+	// }
 
 
 </script>
