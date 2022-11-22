@@ -1,4 +1,5 @@
 
+const { response } = require('express')
 const brand = require('../../Model/adminBrand')
 const category = require('../../Model/adminCategory')
 
@@ -33,11 +34,19 @@ const editBrandAction = (req,res)=>{
 
 
 
-const deleteBrand = (req,res)=>{
+const deleteBrand = async(req,res)=>{
     let brandId = req.query.id
-    brand.deleteBrand(brandId).then((response)=>{
-        res.redirect('/admin/adminBrandPage')
-    })
+    await brand.checkProducts(brandId).then((products)=>{
+        if(products.length > 0){
+            response.status = false
+            res.json(response)
+        }else{
+            brand.deleteBrand(brandId).then((response)=>{
+                response.status = true
+                res.json(response)
+            })
+        }
+    })      
 }
 
 

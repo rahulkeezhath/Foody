@@ -29,7 +29,6 @@ const viewOrderProducts = async(req,res)=>{
     if(req.session.user){
     cartCount = await userCartMgmt.getCartCount(req.session.user._id)
     }
-    console.log("jhghhgh");
     userOrderMgmt.getOrderProducts(id).then((orderItem)=>{
         res.render('user/viewOrderProducts',{admin:false,user:true,userData,cartCount,orderItem})
     })

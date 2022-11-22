@@ -38,17 +38,11 @@ const userLoginPage = async(req,res)=>{
 
 
 const userLoginControl = (req,res)=>{
-    // let userData = req.session.user
     userLogin.doLogin(req.body).then((response)=>{
         if(response.status){
             req.session.loggedIn=true
             req.session.user= response.user
-            // bannerDisplay.showBanner().then((banner)=>{
-            // userFrontDisplay.displayProducts().then((product)=>{
                 res.redirect('/')
-        // res.render('user/userHomeLanding',{admin:false,user:true,product,banner})
-    //         })
-    // }) 
     }else{
         res.redirect('/login')
     }
@@ -126,12 +120,7 @@ const userSignoutAction = (req,res)=>{
         }else{
             res.redirect('/')
         }
-    })
-    // bannerDisplay.showBanner().then((banner)=>{
-    // userFrontDisplay.displayProducts().then((product)=>{
-    // res.render('user/userHomeLanding',{admin:false,user:true,product,banner})
-//     })
-// }) 
+    }) 
 }
 
 module.exports={

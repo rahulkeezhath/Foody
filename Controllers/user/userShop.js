@@ -1,6 +1,4 @@
 const categoryProducts = require('../../Model/userCategoryShop')
-const brand = require('../../Model/adminBrand')
-const category = require('../../Model/adminCategory')
 const userCartMgmt = require('../../Model/userCartMgmt')
 
 const viewShop = async(req,res)=>{

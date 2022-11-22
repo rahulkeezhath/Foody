@@ -20,7 +20,7 @@ const addBannerPage = (req,res)=>{
     }
 
 const deleteBanner = (req,res)=>{
-    let id = req.body.bannerId
+    let id = req.query  
     adminBanner.deleteBanner(id).then((response)=>{
         res.json(response)
     })

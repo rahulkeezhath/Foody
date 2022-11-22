@@ -5,7 +5,6 @@ const db = require('../config/connection')
 module.exports={
     doBanner:(imageID,addBanner)=>{
         return new Promise(async(resolve,reject)=>{
-            console.log(addBanner)
             db.get().collection(collection.ADD_BANNER).insertOne(imageID,addBanner).then((data)=>{
                 resolve.apply(data)
             })

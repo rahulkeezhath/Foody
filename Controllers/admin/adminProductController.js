@@ -63,7 +63,7 @@ const addProductPage = (req,res)=>{
 const deleteProduct = (req,res)=>{
     let productId = req.query.id
     Product.deleteProduct(productId).then((response)=>{
-        res.redirect('/admin/adminProductPage')
+       res.json(response)
     })
 }
 

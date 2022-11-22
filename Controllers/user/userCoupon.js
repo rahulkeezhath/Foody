@@ -7,12 +7,8 @@ const applyCoupon = async(req,res)=>{
     let couponCode = req.body.couponCode
     totalValue = await userCartMgmt.getTotalAmount(req.session.user._id)
     let TOTAL = totalValue
-    console.log("userData ====>", userData);
-    console.log("couponCode ===>", couponCode);
-    console.log("total amount ===>>", TOTAL);
     let couponDetails = await userCouponMgmt.getCouponDetails(couponCode)
     await userCouponMgmt.getDiscount(couponDetails,TOTAL).then((response)=>{
-        console.log('**********************************',response);
         res.json(response)
     })
 }

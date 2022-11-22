@@ -34,7 +34,7 @@
 
 <section class="home-section">
   <div class="container mt-5">
-    <table class="table">
+    <table class="table p-4" id="categoryTable">
       <thead>
         <tr>
           <th scope="col">S.NO</th>
@@ -51,7 +51,7 @@
           <td><%= category[i].newCategory %></td>
           <td> <img src="/admin/images/<%= category[i].categoryImage %>" style="width: 75px; height: 75px;" alt=""></td>
           <td><a class="btn btn-primary" href="/admin/editCategory?id=<%= category[i]._id%>">Edit</a></td>
-          <td><a class="btn btn-danger" href="/admin/deleteCategory?id=<%= category[i]._id%>" onclick="return confirm('Are you want to delete <%= category[i].newCategory %>')">Delete</a></td>
+          <td><a class="btn btn-danger" href="#" onclick="deleteCategory('<%= category[i]._id %>')">Delete</a></td>
         </tr>
        <% } %>
       </tbody>
@@ -86,7 +86,63 @@ myModal.addEventListener('shown.bs.modal', () => {
     }
   }
 
+
+    function deleteCategory(categoryId){
+      swal({
+      title: "DELETE",
+      text: "DO YOU WANT TO DELETE THIS CATEGORY!",
+      icon: "warning",
+      buttons: ["CANCEL","OK"],
+    }).then(val=>{
+      if(val){
+        fetch('/admin/deleteCategory?id='+categoryId,
+        {
+          method:'delete'
+        }
+        ).then(res=> res.json()).then(data=>{
+          if(data.status){
+            swal({
+      title: "SUCCESS",
+      text: "CATEGORY SUCCESSFULLY DELETED",
+      icon: "success",
+      button:"OK",
+    }).then(val=>{
+      location.reload()
+    })
+          }else{
+            swal({
+      title: "WARNING",
+      text: "CATEGORY ALREADY IN USE ",
+      icon: "warning",
+      button:"OK",
+    }).then(val=>{
+      location.reload()
+    })
+          }
+        })
+      }
+    })
+    }
+
+
 </script>
+
+
+<script>
+  $(document).ready( function () {
+    $('#categoryTable').DataTable();
+  } );
+  </script>
+
+
+
+
+
+
+
+
+
+
 <script>
   let sidebar = document.querySelector(".sidebar");
  let sidebarBtn = document.querySelector(".sidebarBtn");

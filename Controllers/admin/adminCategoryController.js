@@ -22,11 +22,20 @@ const addNewCategory = (req,res)=>{
 
 
 
-const deleteCategory = (req,res)=>{
+const deleteCategory = async(req,res)=>{
     let categoryId = req.query.id
-    adminCategory.deleteCategory(categoryId).then((response)=>{
-        res.redirect('/admin/adminCategoryPage')
-    })
+    await adminCategory.checkProducts(categoryId).then((products)=>{
+        if(products.length > 0){
+            response.status = false
+            res.json(response)
+        }else{
+            adminCategory.deleteCategory(categoryId).then((response)=>{
+                response.status = true
+                res.json(response)
+        })
+    } 
+})
+
 }
 
 module.exports={

@@ -39,12 +39,10 @@ const payment = async(req,res)=>{
     }
 
   })
- console.log(req.body);
  }
 
 
  const verifyPayment = (req,res)=>{
-  console.log(req.body);
   razorpayMgmt.verifyPayment(req.body).then(()=>{
     razorpayMgmt.changePaymentStatus(req.body.order.receipt).then(()=>{
       console.log("Payment Successfull");

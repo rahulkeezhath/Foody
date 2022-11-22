@@ -33,7 +33,7 @@ router.post('/userManagement/unblock',adminSessionCheck.adminSessionChecker,admi
 
 router.get('/adminCategoryPage',adminSessionCheck.adminSessionChecker,addCategory.adminCategoryAction)
 router.post('/addCategory',adminSessionCheck.adminSessionChecker,upload.single('categoryImage'),addCategory.addNewCategory)
-router.get('/deleteCategory',adminSessionCheck.adminSessionChecker,addCategory.deleteCategory)
+router.delete('/deleteCategory',adminSessionCheck.adminSessionChecker,addCategory.deleteCategory)
 
 
 // Brand router
@@ -42,7 +42,7 @@ router.get('/adminBrandPage',adminSessionCheck.adminSessionChecker,addBrand.admi
 router.post('/addBrand',adminSessionCheck.adminSessionChecker,addBrand.addNewBrand)
 router.get('/editBrand',adminSessionCheck.adminSessionChecker,addBrand.getBrand)
 router.post('/editBrand',adminSessionCheck.adminSessionChecker,addBrand.editBrandAction)
-router.get('/deleteBrand',adminSessionCheck.adminSessionChecker,addBrand.deleteBrand)
+router.delete('/deleteBrand',adminSessionCheck.adminSessionChecker,addBrand.deleteBrand)
 
 // Product router
 
@@ -51,7 +51,7 @@ router.get('/addProducts',adminSessionCheck.adminSessionChecker,addProduct.addNe
 router.post('/addNewProduct',adminSessionCheck.adminSessionChecker,upload.single('productImage'),addProduct.addProductPage)
 router.get('/editProduct',adminSessionCheck.adminSessionChecker,addProduct.editProduct)
 router.post('/editProductAction',adminSessionCheck.adminSessionChecker,upload.single('productImage'),addProduct.editProductAction)
-router.get('/deleteProduct',adminSessionCheck.adminSessionChecker,addProduct.deleteProduct)
+router.delete('/deleteProduct',adminSessionCheck.adminSessionChecker,addProduct.deleteProduct)
 
 
 // Banner router

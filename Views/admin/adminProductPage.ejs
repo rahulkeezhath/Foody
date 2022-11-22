@@ -5,7 +5,7 @@
   </div>
   <section class="home-section">
     <div class="container">
-  <table class="table" id="productsTable">
+  <table class="table p-4" id="productsTable">
     <thead class="thead-dark">
       <tr>
         <th scope="col">S.NO</th>
@@ -33,7 +33,7 @@
         <td><%= product[i].productDescription %></td>
         <td> <img src="/admin/images/<%= product[i].Picture %>" style="width: 75px; height: 75px;" alt=""></td>
         <td><a class="btn btn-primary" href="/admin/editProduct?id=<%= product[i]._id%>">Edit</a><br>
-        <a class="btn btn-danger" href="/admin/deleteProduct?id=<%= product[i]._id%>" onclick="return confirm('Are you want to delete <%= product[i].productName %>')">Delete</a></td>
+        <a class="btn btn-danger" href="#" onclick="deleteProduct('<%= product[i]._id%>')">Delete</a></td>
       </tr>
       <% } %>
     </tbody>
@@ -42,21 +42,54 @@
     </section>
   
   
-  <script>
-    let sidebar = document.querySelector(".sidebar");
- let sidebarBtn = document.querySelector(".sidebarBtn");
- sidebarBtn.onclick = function() {
-   sidebar.classList.toggle("active");
-   if(sidebar.classList.contains("active")){
-   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
- }else
-   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
- }
-  </script>
+  
 
 
 <script>
+
+function deleteProduct(productId){
+      swal({
+      title: "DELETE",
+      text: "DO YOU WANT TO DELETE THIS PRODUCT!",
+      icon: "warning",
+      buttons: ["CANCEL","OK"],
+    }).then(val=>{
+      if(val){
+        fetch('/admin/deleteProduct?id='+productId,
+        {
+          method:'delete'
+        }
+        ).then(res=> res.json()).then(data=>{
+        
+            swal({
+      title: "SUCCESS",
+      text: "PRODUCT SUCCESSFULLY DELETED",
+      icon: "success",
+      button:"OK",
+    })
+      location.reload()
+        })
+      }
+    })
+    }
+
+
 $(document).ready( function () {
   $('#productsTable').DataTable();
 } );
+</script>
+
+
+
+
+<script>
+  let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+ sidebar.classList.toggle("active");
+ if(sidebar.classList.contains("active")){
+ sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+ sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
 </script>

@@ -6,7 +6,6 @@ const db = require('../config/connection')
 module.exports={
     doBrand:(addBrand)=>{
         return new Promise(async(resolve,reject)=>{
-            console.log(addBrand)
             db.get().collection(collection.ADD_BRAND).insertOne(addBrand).then((data)=>{
                 resolve(data)
             })
@@ -44,6 +43,14 @@ module.exports={
             await db.get().collection(collection.ADD_BRAND).deleteOne({_id:ObjectId(brandId)}).then((response)=>{
                 resolve(response)
             })
+        })
+    },
+
+    checkProducts:(brandId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let brandDetails = await db.get().collection(collection.ADD_BRAND).findOne({_id:ObjectId(brandId)})
+            let products = await db.get().collection(collection.ADD_PRODUCT).find({brand:brandDetails.brand}).toArray()
+            resolve(products)
         })
     }
 

@@ -47,7 +47,7 @@
         <th scope="row"><%= i %></th>
         <td><%= values.newBanner %></td>
         <td> <img src="/admin/images/<%= values.productImage %>" style="width: 75px; height: 75px;" alt=""></td>
-        <td><a onclick="bannerDelete('<%= values._id %>') ,confirm('Are you want to delete <%= values.newBanner %>')" class="btn btn-danger" href="">Delete</a></td>
+        <td><a  class="btn btn-danger" href="#" onclick="bannerDelete('<%= values._id %>')">Delete</a></td>
       </tr>
    <% i++ } %>
     </tbody>
@@ -55,8 +55,8 @@
     </div>
   </section>
 
+
   <script>
-  
     const myModal = document.getElementById('myModal')
     const myInput = document.getElementById('myInput')
     
@@ -67,17 +67,29 @@
 
     
   function bannerDelete(bannerId){
-    fetch("/admin/deleteBanner",{
-      method: 'DELETE',
-      headers: {
-        'Content-Type':'application/JSON'
-      },
-      body:JSON.stringify({
-        bannerId
-      })
-    }).then(()=>{
-      window.location='/admin/adminBannerPage'
-})
+    swal({
+      title: "DELETE",
+      text: "DO YOU WANT TO DELETE THIS BANNER!",
+      icon: "warning",
+      buttons: ["CANCEL","OK"],
+    }).then(val=>{
+      if(val){
+    fetch("/admin/deleteBanner?id="+bannerId,
+    {
+          method:'delete'
+        }
+        ).then(res=> res.json()).then(data=>{
+        
+            swal({
+      title: "SUCCESS",
+      text: "BANNER SUCCESSFULLY DELETED",
+      icon: "success",
+      button:"OK",
+    })
+       location.reload()
+        })
+      }
+    })
 }
      </script>
 

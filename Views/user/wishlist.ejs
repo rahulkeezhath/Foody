@@ -22,6 +22,7 @@
                               <th>Product Image</th>
                               <th>Product Description</th>
                               <th>Price</th>
+                              <th>Options</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -38,6 +39,7 @@
                                   <p><%= values.products.productDescription %></p>
                               </td>
                               <td class="price">Rs.<%= values.products.sellingPrice %></td>
+                              <td><p><a onclick="addToCart('<%= values.products._id %>')" class="btn btn-success py-3 px-5">Add to Cart</a></p></td>
                             </tr><!-- END TR-->
                             <% } %>
                           </tbody>

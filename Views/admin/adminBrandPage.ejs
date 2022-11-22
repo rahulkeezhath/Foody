@@ -76,7 +76,7 @@
 
     <section class="home-section mt-5">
       <div class="container mt-5">
-        <table class="table">
+        <table class="table p-5" id="brandTable">
           <thead>
             <tr>
               <th scope="col">S.NO</th>
@@ -93,7 +93,7 @@
               <td><%= brand[i].categoryName %></td>
               <td><%= brand[i].brand %></td>
               <td><a class="btn btn-primary" href="" data-bs-toggle="modal" data-bs-target="#exampleModalh" onclick="brandEdit('<%= brand[i]._id %>','<%= brand[i].brand %>')">Edit</a></td>
-              <td><a class="btn btn-danger" href="/admin/deleteBrand?id=<%= brand[i]._id%>" onclick=" return confirm('Are you want to delete <%= brand[i].brand%>')">Delete</a></td>
+              <td><a class="btn btn-danger" href="#" onclick="deleteBrand('<%= brand[i]._id%>')">Delete</a></td>
             </tr>
             <% } %>
           </tbody>
@@ -129,17 +129,7 @@
       }
     
     </script>
-      <script>
-        let sidebar = document.querySelector(".sidebar");
-       let sidebarBtn = document.querySelector(".sidebarBtn");
-       sidebarBtn.onclick = function() {
-       sidebar.classList.toggle("active");
-       if(sidebar.classList.contains("active")){
-       sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right"); 
-       }else
-       sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-       }
-       </script>
+      
 
 <script>
   function brandEdit(id,brand){
@@ -149,4 +139,63 @@
       brandEditField.value = brand;
       brandID.value = id
   }
+
+
+  
+  function deleteBrand(brandId){
+      swal({
+      title: "DELETE",
+      text: "DO YOU WANT TO DELETE THIS BRAND!",
+      icon: "warning",
+      buttons: ["CANCEL","OK"],
+    }).then(val=>{
+      if(val){
+        fetch('/admin/deleteBrand?id='+brandId,
+        {
+          method:'delete'
+        }
+        ).then(res=> res.json()).then(data=>{
+          if(data.status){
+            swal({
+      title: "SUCCESS",
+      text: "BRAND SUCCESSFULLY DELETED",
+      icon: "success",
+      button:"OK",
+    }).then(val=>{
+      location.reload()
+    })
+          }else{
+            swal({
+      title: "WARNING",
+      text: "BRAND ALREADY IN USE ",
+      icon: "warning",
+      button:"OK",
+    }).then(val=>{
+      location.reload()
+    })
+          }
+        })
+      }
+    })
+    }
+
+
+  $(document).ready( function () {
+    $('#brandTable').DataTable();
+  } );
 </script>
+
+
+
+
+<script>
+  let sidebar = document.querySelector(".sidebar");
+ let sidebarBtn = document.querySelector(".sidebarBtn");
+ sidebarBtn.onclick = function() {
+ sidebar.classList.toggle("active");
+ if(sidebar.classList.contains("active")){
+ sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right"); 
+ }else
+ sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+ }
+ </script>
