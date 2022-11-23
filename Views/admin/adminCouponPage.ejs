@@ -8,7 +8,7 @@
 </section>
             <section class="home-section">
             <div class="container mt-5">
-                <table width="100%" id="couponTable" class="table">
+                <table width="100%" id="couponTable" class="table p-4">
                     <thead>
                         <tr>
                             <th scope="col">S.NO</th>
@@ -42,7 +42,7 @@
                                     <%= availableCoupons[i].endDate %>
                                 </td>
                                 <td>
-                                   
+                                    <a class="btn btn-danger" href="#" onclick="deleteCoupon('<%= availableCoupons[i]._id %>')">Delete</a>
                                 </td>
                             </tr>
                           <% } %>
@@ -78,11 +78,55 @@
 </main>
 
 
-<!-- <script>
+<script>
+
+    function deleteCoupon(couponId){
+        swal({
+      title: "DELETE",
+      text: "DO YOU WANT TO DELETE THIS COUPON!",
+      icon: "warning",
+      buttons: ["CANCEL","OK"],
+    }).then(val=>{
+      if(val){
+        fetch('/admin/deleteCoupon?id='+couponId,
+        {
+          method:'delete'
+        }
+        ).then(res=> res.json()).then(data=>{
+        
+            swal({
+      title: "SUCCESS",
+      text: "COUPON SUCCESSFULLY DELETED",
+      icon: "success",
+      button:"OK",
+    })
+      location.reload()
+        })
+      }
+    })
+    }
+
+
+
+
      $(document).ready(function () {
         $('#couponTable').DataTable();
     });
-</script> -->
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
   let sidebar = document.querySelector(".sidebar");

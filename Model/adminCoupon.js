@@ -1,6 +1,7 @@
 const db = require('../config/connection')
 const collection = require('../config/collection')
 const { ObjectId } = require('mongodb')
+const { response } = require('express')
 
 module.exports = {
     addCoupon:(couponDetails)=>{
@@ -18,9 +19,10 @@ module.exports = {
         })
     },
     deleteCoupon:(couponId)=>{
-        return new Promise((resolve,reject)=>{
-            db.get().collection(collection.COUPON_COLLECTION).deleteOne({_id:ObjectId(couponId)})
-            resolve()
+        return new Promise(async(resolve,reject)=>{
+           await db.get().collection(collection.COUPON_COLLECTION).deleteOne({_id:ObjectId(couponId)}).then((response)=>{
+                resolve(response)
+           })
         })
-    }
+    },
 }

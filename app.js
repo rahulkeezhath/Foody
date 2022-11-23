@@ -44,6 +44,10 @@ db.connect((err) => {
 app.use("/admin", adminRouter);
 app.use("/", userRouter);
 
+app.get('*',(req,res)=>{
+  res.render('user/404',{admin:false,user:false})
+})
+
 app.listen(process.env.PORT, () => {
   console.log("Server Started");
 });

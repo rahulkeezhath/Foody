@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="box">
-        <div class="right-side">
+        <div class="right-side">  
          <a href="/admin/adminProductPage" class="btn"> <div class="box-topic"> 6 PRODUCTS</div></a>
         </div>
       </div>
@@ -26,6 +26,42 @@
     </div>
   </section>
   
+
+<section class="home-section">
+<div style="width:30rem ;height:30rem ;">
+  <canvas id="myChart"></canvas>
+</div>
+</section>
+
+
+
+
+
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
 
 
 <script>

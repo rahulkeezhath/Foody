@@ -44,9 +44,8 @@
     -webkit-transform: translateX(-50%);
         -ms-transform: translateX(-50%);
             transform: translateX(-50%);
-    background: url('../user/img/bg.jpg') no-repeat;
+    background: url('../user/img/backimg.jpg') no-repeat;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-size: cover;
     background-position: center;
   }

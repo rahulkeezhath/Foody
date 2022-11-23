@@ -22,10 +22,8 @@ const addCoupon = (req,res)=>{
 
 const deleteCoupon = (req,res)=>{
     let couponId = req.query.id
-    couponMgmt.deleteCoupon(couponId).then(()=>{
-        couponMgmt.displayCoupon().then((availableCoupons)=>{
-            res.render("admin/adminCouponPage",{admin:true,user:false,title:"COUPON CONTROL PAGE",availableCoupons})
-        })
+    couponMgmt.deleteCoupon(couponId).then((response)=>{
+        res.json(response)
     })
 }
 

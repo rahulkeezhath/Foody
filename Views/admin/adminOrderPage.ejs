@@ -5,7 +5,7 @@
           <tr>
             <th scope="col">OrderId</th>
             <th scope="col">Order Date</th>
-            <th scope="col">Customer Name</th>
+            <th scope="col" class="text-center">Customer Details</th>
             <th scope="col">Order status</th>
             <th scope="col">Payment Method</th>
             <th scope="col">Amount</th>
@@ -18,7 +18,7 @@
           <td> <a href="/admin/orderId?id=<%= orderItems[i]._id %>"> <%= orderItems[i]._id %></td></a>
             <td><%= orderItems[i].date.toLocaleDateString() %> <br>
                 <%= orderItems[i].date.toLocaleTimeString() %></td>
-            <td><%= orderItems[i].deliveryDetails.name %></td>
+            <td><%= orderItems[i].deliveryDetails.address %></td>
             <td><%= orderItems[i].status %></td>
             <td><%= orderItems[i].paymentMethod %></td>
             <td><%= orderItems[i].totalAmount %></td>

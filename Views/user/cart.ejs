@@ -240,12 +240,12 @@
 		}).then(res => res.json()).then(data=>{
 
 			if(data.couponStatus == true){
-				message.innerHTML == ''
+				message.innerHTML = 'COUPON APPLIED'
 				discountlDisplay.innerHTML = data.discount
 				finalTotal.innerHTML = data.discountedTotal
 			}
 			else{
-				message.innerHTML = 'COUPON NOT ACCEPTABLE'
+				message.innerHTML = 'COUPON NOT VALID'
 				discountlDisplay.innerHTML = data.discount
 				finalTotal.innerHTML = data.discountedTotal
 			}

@@ -67,6 +67,7 @@ router.get('/adminOrderPage',adminSessionCheck.adminSessionChecker,adminOrder.ad
 router.get('/adminCoupon',adminSessionCheck.adminSessionChecker,adminCoupon.couponPage)
 router.get('/adminAddCoupon',adminSessionCheck.adminSessionChecker,adminCoupon.createCouponPage)
 router.post('/adminAddCoupon',adminSessionCheck.adminSessionChecker,adminCoupon.addCoupon)
+router.delete("/deleteCoupon",adminSessionCheck.adminSessionChecker,adminCoupon.deleteCoupon)
 
 
 module.exports = router
