@@ -8,12 +8,7 @@
                 <tr>
                   <th scope="col">S.NO</th>
                   <th>Date</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>Country</th>
-                  <th>State</th>
-                  <th>Pincode</th>
-                  <th>Mobile</th>
+                  <th class="text-center">Address</th>
                   <th>Total Amount</th>
                   <th>Payment Method</th>
                   <th>Status</th>
@@ -26,12 +21,7 @@
                   <td><%= i++ %></td>
                   <td><%= values.date.toLocaleDateString() %><br>
                   <%= values.date.toLocaleTimeString() %></td>
-                  <td><%= values.deliveryDetails.name %></td>
                   <td><%= values.deliveryDetails.address %></td>
-                  <td><%= values.deliveryDetails.country %></td>
-                  <td><%= values.deliveryDetails.state %></td>
-                  <td><%= values.deliveryDetails.pincode %></td>
-                  <td><%= values.deliveryDetails.mobile %></td>
                   <td><%= values.totalAmount %></td>
                   <td><%= values.paymentMethod %></td>
                   <td><%= values.status %></td>

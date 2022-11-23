@@ -33,6 +33,8 @@ router.get('/contact',userSessionCheck.userSessionChecker,userNavButtons.contact
 router.get('/profile',userSessionCheck.userSessionChecker,userProfile.profilePage)
 router.get('/editProfile',userSessionCheck.userSessionChecker,userProfile.editProfile)
 router.post('/editUserDetails',userSessionCheck.userSessionChecker,userProfile.updateProfile)
+router.get('/addressAddPage',userSessionCheck.userSessionChecker,userProfile.addressPage)
+router.post('/addAddress',userSessionCheck.userSessionChecker,userProfile.addAddress)
 
 //Cart router
 router.get('/cart',userSessionCheck.userSessionChecker,userCart.userCart)

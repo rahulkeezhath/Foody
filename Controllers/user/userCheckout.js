@@ -2,6 +2,8 @@ const { response } = require("express")
 const userCartMgmt = require('../../Model/userCartMgmt')
 const razorpayMgmt = require('../../Model/razorpay')
 const userCouponMgmt = require('../../Model/userCoupon')
+const userAddressMgmt = require('../../Model/userAddress')
+const userAddress = require("../../Model/userAddress")
 
 const userCheckout = async(req,res)=>{
   let userData = req.session.user
@@ -20,9 +22,10 @@ const placeOrder = async(req,res)=>{
   if(req.session.user){
   cartCount = await userCartMgmt.getCartCount(req.session.user._id)
   let products=  await userCartMgmt.getCartProducts(req.session.user._id)
+   let addressList = await userAddressMgmt.showAddress(req.session.user._id)
   // let totalAmount = await userCartMgmt.getTotalAmount(req.session.user._id)
 
-  res.render('user/checkout',{admin:false,user:true,userData,cartCount,products,totalValue})
+  res.render('user/checkout',{admin:false,user:true,userData,cartCount,products,totalValue,addressList})
   }
 }
 

@@ -261,7 +261,6 @@
 			body:JSON.stringify({couponCode,totalValue})
 		}).then(res => res.json()).then((data)=>{
 			console.log(('final total',data));
-			window.alert(data)
 			location.href='/cart/proceedToCheckout?finalTotal='+data
 		})
 	}

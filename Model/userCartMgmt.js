@@ -221,12 +221,12 @@ module.exports = {
             let status = order['payment-method']==='COD'?'placed':'pending'
             let orderObj={
                 deliveryDetails:{
-                    name:order.name,
-                    address:order.address,
-                    country:order.country,
-                    state:order.state,
-                    pincode:order.pincode,
-                    mobile:order.mobile
+                    // name:order.name,
+                    address:order.list,
+                    // country:order.country,
+                    // state:order.state,
+                    // pincode:order.pincode,
+                    // mobile:order.mobile
                 },
                 userId:ObjectId(order.userId),
                 paymentMethod:order['payment-method'],

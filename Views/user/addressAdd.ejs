@@ -1,0 +1,115 @@
+<body style="overflow-x: hidden;">
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-90">
+          <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+              <div class="card shadow-2-strong card-registration" style="border-radius: 15px; border-left: #f2e8f3;">
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Add Your Address</h3>
+                  <form action="/addAddress" method="post">
+      
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+      
+                        <div class="form-outline">
+                             <label class="form-label" for="firstName"> Name</label>
+                          <input type="text" id="name" name="name" class="form-control form-control-lg" />
+                         
+                        </div>
+      
+                      </div>
+                      <div class="col-md-6 mb-4">
+      
+                        <div class="form-outline">
+                            <label class="form-label" for="mobile">Mobile</label>
+                          <input type="number" id="mobile" name="mobile" class="form-control form-control-lg" />
+                         
+                        </div>
+      
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+      
+                        <div class="form-outline">
+                            <label for="form-label" class="form-label">Country</label>
+                          <input type="text" class="form-control form-control-lg" name="country" id="country" />
+                         
+                        </div>
+      
+                      </div>
+                      <div class="col-md-6 mb-4">
+      
+                        <div class="form-outline">
+                            <label for="form-label" class="form-label">State</label>
+                          <input type="text" class="form-control form-control-lg" name="state" id="state" />
+                         
+                        </div>
+      
+                      </div>
+                      
+                    </div>
+      
+                    <div class="row">
+                      <div class="col-md-12 mb-4 d-flex align-items-center">
+      
+                        <div class="form-outline datepicker w-100">
+                            <label for="Address" class="form-label">Address</label>
+                          <input type="text" class="form-control form-control-lg" name="address" id="address" />
+                         
+                        </div>
+      
+                      </div>
+                      
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-4 d-flex align-items-center">
+        
+                          <div class="form-outline datepicker w-100">
+                            <label for="pincode" class="form-label">Pincode</label>
+                            <input type="number" name="pincode" class="form-control form-control-lg" id="pincode" />
+                            
+                          </div>
+        
+                        </div>
+                        
+                      </div>
+      
+                    <div class="mt-4 pt-2 text-center ">
+                      <input class="btn btn-primary btn-lg px-5" type="submit" value="Add" />
+                    </div>
+      
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    
+        <br><br>
+      </section>
+      <style>
+        .gradient-custom {
+    /* fallback for old browsers */
+    background: #f2e8f3;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to bottom right, rgb(85, 220, 173),  rgb(168, 228, 203));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom right, rgb(64, 175, 101), rgb(168, 228, 203))
+    }
+    
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+      </style>
+      </body>
