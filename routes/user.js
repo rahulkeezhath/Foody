@@ -35,6 +35,7 @@ router.get('/editProfile',userSessionCheck.userSessionChecker,userProfile.editPr
 router.post('/editUserDetails',userSessionCheck.userSessionChecker,userProfile.updateProfile)
 router.get('/addressAddPage',userSessionCheck.userSessionChecker,userProfile.addressPage)
 router.post('/addAddress',userSessionCheck.userSessionChecker,userProfile.addAddress)
+router.post('/userPasswordUpdate',userSessionCheck.userSessionChecker,userProfile.updatePassword)
 
 //Cart router
 router.get('/cart',userSessionCheck.userSessionChecker,userCart.userCart)

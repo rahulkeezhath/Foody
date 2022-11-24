@@ -55,10 +55,18 @@ const addAddress = (req,res)=>{
     })
 }
 
+const updatePassword = (req,res)=>{
+    let userData = req.session.user._id
+    userProfileMgmt.updatePassword(userData,req.body).then((response)=>{
+        res.json(response)
+    })
+}
+
 module.exports = {
     profilePage,
     editProfile,
     updateProfile,
     addressPage,
-    addAddress
+    addAddress,
+    updatePassword
 }   

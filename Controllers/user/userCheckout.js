@@ -59,20 +59,24 @@ const payment = async(req,res)=>{
 
 
  const displayCheckoutPage = async(req,res)=>{
-  let finalTotal = req.body.finalTotal
+  let finalTotal = (req.body.totalValue)
   let details = req.body
+  details.finalTotal = parseInt(details.totalValue)
   if(details.couponCode===''){
-    finalTotal = details.finalTotal +(5/100)*details.finalTotal
+    let shippingCharge = (5/100)*details.totalValue
+    finalTotal = parseInt(details.totalValue) +shippingCharge
     res.json(finalTotal)
   }else{
     let couponDetails = await userCouponMgmt.getCouponDetails(details.couponCode)
     if(couponDetails){
       await userCouponMgmt.getDiscount(couponDetails,details.totalValue).then((response)=>{
         finalTotal = response.discountedTotal
-        res.json(response.discountedTotal)
+        finalTotal = Math.round(finalTotal)
+        res.json(finalTotal)
       })
     }else{
-      finalTotal = details.totalValue + (5/100)*details.totalValue
+      let shippingCharge =  (5/100)*details.totalValue
+      finalTotal = details.totalValue + shippingCharge
       res.json(finalTotal)
     }
   }
