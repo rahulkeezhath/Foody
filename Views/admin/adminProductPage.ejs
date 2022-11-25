@@ -31,7 +31,7 @@
         <td><%= product[i].sellingPrice %></td>
         <td><%= product[i].quantity %></td>
         <td><%= product[i].productDescription %></td>
-        <td> <img src="/admin/images/<%= product[i].Picture %>" style="width: 75px; height: 75px;" alt=""></td>
+        <td> <img src="<%= product[i].Picture%>" style="width: 75px; height: 75px;" alt=""></td>
         <td><a class="btn btn-primary" href="/admin/editProduct?id=<%= product[i]._id%>">Edit</a><br>
         <a class="btn btn-danger" href="#" onclick="deleteProduct('<%= product[i]._id%>')">Delete</a></td>
       </tr>

@@ -46,7 +46,7 @@
       <tr>
         <th scope="row"><%= i %></th>
         <td><%= values.newBanner %></td>
-        <td> <img src="/admin/images/<%= values.productImage %>" style="width: 75px; height: 75px;" alt=""></td>
+        <td> <img src="<%= values.productImage%>" style="width: 75px; height: 75px;" alt=""></td>
         <td><a  class="btn btn-danger" href="#" onclick="bannerDelete('<%= values._id %>')">Delete</a></td>
       </tr>
    <% i++ } %>

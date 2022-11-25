@@ -12,7 +12,7 @@ const addNewCategory = (req,res)=>{
         const{
             newCategory,
         }=req.body
-    adminCategory.doCategory({categoryImage:req.file.filename,
+    adminCategory.doCategory({categoryImage:req.file.path,
         newCategory,
     }).then((response)=>{
         res.redirect('/admin/adminCategoryPage') 

@@ -44,7 +44,7 @@ const addProductPage = (req,res)=>{
         recentProducts
        }= req.body
         Product.doProduct({
-            Picture: req.file.filename,
+            Picture: req.file.path,
             productName,
             actualPrice,
             sellingPrice,
@@ -55,6 +55,7 @@ const addProductPage = (req,res)=>{
             recentProducts,
             featuredProducts
         }).then((response)=>{
+            console.log(req.file);
             res.redirect('/admin/adminProductPage')
         })
     }
@@ -71,7 +72,7 @@ const deleteProduct = (req,res)=>{
 const editProductAction = (req,res)=>{
     let id = req.body.id
     let newProductData= req.body
-    let newImageId = req.file.filename
+    let newImageId = req.file.path
     Product.editProduct(id, newProductData, newImageId).then(()=>{
         Product.showProduct().then((product)=>{
             

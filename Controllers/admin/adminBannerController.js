@@ -12,7 +12,7 @@ const addBannerPage = (req,res)=>{
         newBanner,
        }= req.body
         adminBanner.doBanner({
-            productImage: req.file.filename,
+            productImage: req.file.path,
             newBanner,
         }).then((response)=>{
             res.redirect('/admin/adminBannerPage')

@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const multer = require('multer')
 const admin = require('../Controllers/admin/adminLoginController')
 const addCategory = require('../Controllers/admin/adminCategoryController')
 const addBrand = require('../Controllers/admin/adminBrandController')
@@ -8,9 +9,12 @@ const adminUser = require('../Controllers/admin/adminUserController')
 const adminBanner = require('../Controllers/admin/adminBannerController')
 const adminOrder = require('../Controllers/admin/adminOrderController')
 const adminCoupon = require('../Controllers/admin/adminCouponController')
-const upload = require('../Middlewares/multer')
+const adminReport = require('../Controllers/admin/adminReportController')
+const {storage} = require('../cloudinary/Cloud')
+const upload = multer({storage})
 const { route } = require('./user')
 const  adminSessionCheck  = require('../Middlewares/sessionMiddleware')
+
 
 
 
@@ -61,6 +65,7 @@ router.delete('/deleteBanner',adminSessionCheck.adminSessionChecker,adminBanner.
 
 // Order router
 router.get('/adminOrderPage',adminSessionCheck.adminSessionChecker,adminOrder.adminOrderPage)
+router.get('/salesReport',adminSessionCheck.adminSessionChecker,adminReport.getSalesReport)
 
 
 //Coupon router

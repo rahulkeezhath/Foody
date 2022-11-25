@@ -26,7 +26,7 @@
     <section id="home-section" class="hero"> 
 		  <div class="home-slider owl-carousel">
 			<% for(values of banner) {%>
-	      <div class="slider-item" style="background-image: url('/admin/images/<%= values.productImage %>');">
+	      <div class="slider-item" style="background-image: url('<%= values.productImage %>');">
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -113,7 +113,7 @@
 							</div> -->
 							<% for(var i=0;i<category.length;i++) { %>
 							<div class="col-md-6">
-								<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url('/admin/images/<%= category[i].categoryImage %>');">
+								<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url('<%= category[i].categoryImage %>');">
 									<div class="text px-3 py-1">
 										<h2 class="mb-0"><a href="viewCategory?id=<%= category[i]._id %>"><%= category[i].newCategory %></a></h2>
 									</div>
@@ -163,7 +163,7 @@
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product p-3" style="width: 260px; height: 300px;">
     					<a href="viewSingleProduct?id=<%= product[i]._id %>" class="img-prod">
-							<div style="background-image: url('/admin/images/<%= product[i].Picture %>'); width: 70rem; height: 10rem; background-size: contain; background-repeat: no-repeat;"></div>
+							<div style="background-image: url('<%= product[i].Picture %>'); width: 70rem; height: 10rem; background-size: contain; background-repeat: no-repeat;"></div>
 							<!-- <img class="img-fluid" style="width: 100%; height: 100%;" src="/admin/images/<%= product[i].Picture %>" alt="img not found"> -->
     						<span class="status">30%</span>
 						

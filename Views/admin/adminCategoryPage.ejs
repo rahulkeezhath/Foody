@@ -49,7 +49,7 @@
         <tr>
           <th scope="row"><%= i+1 %></th>
           <td><%= category[i].newCategory %></td>
-          <td> <img src="/admin/images/<%= category[i].categoryImage %>" style="width: 75px; height: 75px;" alt=""></td>
+          <td> <img src="<%= category[i].categoryImage %>" style="width: 75px; height: 75px;" alt=""></td>
           <td><a class="btn btn-primary" href="/admin/editCategory?id=<%= category[i]._id%>">Edit</a></td>
           <td><a class="btn btn-danger" href="#" onclick="deleteCategory('<%= category[i]._id %>')">Delete</a></td>
         </tr>

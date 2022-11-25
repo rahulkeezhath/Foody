@@ -42,20 +42,27 @@
                             <div class="form-check my-2 mx-2">
                                 <% for (var i=0; i<addressList.details.length;i++) { %>
                                     <input type="radio" 
-                                    value="<%= addressList.details[i].name %>,<%= addressList.details[i].mobile %>,<%= addressList.details[i].address %>-<%= addressList.details[i].pincode %>" 
-                                    class="form-check-input" id="check1" name="list" value="something" >
+                                    value="<%= addressList.details[i].name %>,
+                                    <%= addressList.details[i].mobile %>,
+                                    <%= addressList.details[i].address %>-<%= addressList.details[i].pincode %>" 
+                                    class="form-check-input" id="check1" name="list" value="something"  required>
                                     <label class="form-check-label" for="check1">
                                         
                                         <div>
+                                            <strong>Name : - </strong>
                                             <%= addressList.details[i].name %> <br>
+                                            <strong>Mobile : - </strong>
                                              <%= addressList.details[i].mobile %>
                                         </div>
                                         
                                         <div>
+                                            <strong>Country : - </strong>
                                             <%= addressList.details[i].country %> <br>
+                                            <strong>State : - </strong>
                                             <%= addressList.details[i].state %>
                                         </div>
                                         <div>
+                                            <strong>Address & Pincode : - </strong>
                                             <%= addressList.details[i].address %> - <%= addressList.details[i].pincode %>
                                         </div><br>
                                         <% } %>
