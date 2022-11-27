@@ -43,6 +43,9 @@
                   <input type="password" class="form-control" placeholder="Enter Password" name="password" id="pass">
                 </div>
                 <span id="passwordError" class="text-danger"></span>
+                  <% if(locals.error) { %>
+                    <div><span class="text-danger"><%= error %></span></div>
+                    <% } %>   
                 <div class="d-sm-flex mb-5 align-items-center">
                   <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span>
                     <input type="checkbox" checked="checked"/>

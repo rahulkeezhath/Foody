@@ -224,7 +224,7 @@ module.exports = {
                     // name:order.name,
                     address:order.list,
                     // country:order.country,
-                    // state:order.state,
+                    // state:order.state,dd
                     // pincode:order.pincode,
                     // mobile:order.mobile
                 },

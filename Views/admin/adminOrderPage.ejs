@@ -1,4 +1,16 @@
 <section class="home-section mt-5">
+
+    <!-- Filter Option -->
+    <div class="filter d-flex justify-content-center p-3">
+      <form action="/admin/salesReport" id="salesFilterForm" class="me-3">
+          <label for="">From Date</label>
+          <input type="date" name="fromDate" required>
+          <label for="">To Date</label>
+          <input type="date" name="toDate" required>
+          <input type="submit" value="Sales Report" class="btn btn-warning">
+    </form>
+  </div>
+
 <div class="container"> 
     <table class="table table-bordered p-4" id="orderTable">
         <thead class="bg-secondary">

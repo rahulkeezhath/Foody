@@ -17,8 +17,9 @@
 						name="password" id="pass" value="">
 			</div>
       <span id="passwordError"></span>
-
-
+      <% if(locals.error) { %>
+        <div><span class="text-danger"><%= error %></span></div>
+        <% } %>   
 			<input class="button" type="submit"
 				 value="Sign In">
 		</div>

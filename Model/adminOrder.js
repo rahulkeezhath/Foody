@@ -45,5 +45,31 @@ module.exports={
             ]).toArray()
             resolve(orderProducts)
         })
+    },
+    CheckStatusOrders:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let orderStatus = await db.get().collection(collection.ORDER_COLLECTION).find({status:'Placed'}).toArray()
+            let orderPlacedLength = orderStatus.length
+            resolve(orderPlacedLength)
+        })
+    },
+    showOrderStatus:()=>{
+            return new Promise(async(resolve,reject)=>{
+                let status = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                    {
+                        $group:{
+                            _id:{status:'$status'},
+                            count:{$count:{}}
+                        }
+                    },
+                    {
+                        $project:{
+                            '_id.status':1,
+                            count:1
+                        }
+                    }
+                ]).toArray()
+                resolve(status)
+            })
     }
-}
+} 

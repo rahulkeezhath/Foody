@@ -40,11 +40,15 @@ const userLoginPage = async(req,res)=>{
 const userLoginControl = (req,res)=>{
     userLogin.doLogin(req.body).then((response)=>{
         if(response.status){
-            req.session.loggedIn=true
+            req.session.loggedIn = true
             req.session.user= response.user
                 res.redirect('/')
-    }else{
-        res.redirect('/login')
+    }else if(response.noUser) {
+        res.render('user/userLogin',{admin:false,user:false,error:"User Not Found"})
+    }else if(response.invalid) {
+        res.render('user/userLogin',{admin:false,user:false,error:"Invalid Username or Password"})
+    }else if(response.notVerified) {
+        res.render('user/userLogin',{admin:false,user:false,error:"User Not Verified"})
     }
     })  
 }
@@ -115,7 +119,6 @@ const verifyOtp = async(req,res)=>{
 const userSignoutAction = (req,res)=>{
     req.session.destroy((err)=>{
         if(err) {
-            console.log("Error");
             res.send("Error")
         }else{
             res.redirect('/')

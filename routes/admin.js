@@ -10,6 +10,7 @@ const adminBanner = require('../Controllers/admin/adminBannerController')
 const adminOrder = require('../Controllers/admin/adminOrderController')
 const adminCoupon = require('../Controllers/admin/adminCouponController')
 const adminReport = require('../Controllers/admin/adminReportController')
+const adminChart = require('../Controllers/admin/adminChartController')
 const {storage} = require('../cloudinary/Cloud')
 const upload = multer({storage})
 const { route } = require('./user')
@@ -74,5 +75,10 @@ router.get('/adminAddCoupon',adminSessionCheck.adminSessionChecker,adminCoupon.c
 router.post('/adminAddCoupon',adminSessionCheck.adminSessionChecker,adminCoupon.addCoupon)
 router.delete("/deleteCoupon",adminSessionCheck.adminSessionChecker,adminCoupon.deleteCoupon)
 
+//Sales Report router
+router.get('/salesReport',adminSessionCheck.adminSessionChecker,adminReport.getSalesReport)
+
+//Chart router
+router.get('/chartList',adminSessionCheck.adminSessionChecker,adminChart.chartStatusCount)
 
 module.exports = router

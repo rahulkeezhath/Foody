@@ -16,9 +16,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
-    secret: "123",
+    secret: process.env.SESSION_SECRET_KEY,
     saveUninitialized: true,
-    cookie: { maxAge: 60000000 },
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 7},// 1 Week
     resave: false,
   })
 );
@@ -49,5 +49,5 @@ app.get('*',(req,res)=>{
 })
 
 app.listen(process.env.PORT, () => {
-  console.log("Server Started");
+  console.log("Listening to Port 🫶🫶🫶🫶");
 });

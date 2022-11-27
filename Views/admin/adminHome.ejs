@@ -22,7 +22,6 @@
         </div>
       </div>
     </div>
-
     </div>
   </section>
   
@@ -39,15 +38,21 @@
 
 
 <script>
+  //Chart
+
   const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
+  window.addEventListener('load',()=>{
+    fetch('/admin/chartList',{
+      method:'get'
+    }).then(res=> res.json()).then(data=>{
+      new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['User','Placed Order'],
       datasets: [{
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: [data.userLength,data.orderPlacedLength],
         borderWidth: 1
       }]
     },
@@ -59,6 +64,11 @@
       }
     }
   });
+    }).catch((err)=>{
+      console.log(err.message);
+    })
+  })
+  
 </script>
 
 
