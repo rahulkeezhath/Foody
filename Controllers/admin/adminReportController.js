@@ -4,7 +4,7 @@ const  getSalesReport = (req,res)=>{
     let fromDate = req.query.fromDate
     let toDate = req.query.toDate
     reportModel.getSalesReport(fromDate,toDate).then((salesReport)=>{
-        res.render('admin/salesReport',{admin:true,user:false,title:"SALES REPORT",salesReport})
+        res.render('admin/salesReport',{admin:false,user:false,title:"SALES REPORT",salesReport})
     })
 }
   

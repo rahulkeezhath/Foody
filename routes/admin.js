@@ -10,7 +10,7 @@ const adminBanner = require('../Controllers/admin/adminBannerController')
 const adminOrder = require('../Controllers/admin/adminOrderController')
 const adminCoupon = require('../Controllers/admin/adminCouponController')
 const adminReport = require('../Controllers/admin/adminReportController')
-const adminChart = require('../Controllers/admin/adminChartController')
+const adminChart = require('../Controllers/admin/adminHomeController')
 const {storage} = require('../cloudinary/Cloud')
 const upload = multer({storage})
 const { route } = require('./user')
@@ -23,6 +23,7 @@ const  adminSessionCheck  = require('../Middlewares/sessionMiddleware')
 
 router.get('/',adminSessionCheck.adminSessionChecker,admin.adminLoginPage)
 router.post('/adminLoginAction',admin.adminLoginAction)
+router.get('/adminButton',adminSessionCheck.adminSessionChecker,admin.adminHomeButtton)
 router.get('/adminHome',adminSessionCheck.adminSessionChecker,admin.adminHome)  
 router.get('/adminLogout',admin.adminLogout) 
 
@@ -66,6 +67,8 @@ router.delete('/deleteBanner',adminSessionCheck.adminSessionChecker,adminBanner.
 
 // Order router
 router.get('/adminOrderPage',adminSessionCheck.adminSessionChecker,adminOrder.adminOrderPage)
+router.get('/orderId',adminSessionCheck.adminSessionChecker,adminOrder.viewOrderProducts)
+router.post('/ordersStatusUpdate',adminSessionCheck.adminSessionChecker,adminOrder.updateOrderDetails)
 router.get('/salesReport',adminSessionCheck.adminSessionChecker,adminReport.getSalesReport)
 
 
@@ -79,6 +82,6 @@ router.delete("/deleteCoupon",adminSessionCheck.adminSessionChecker,adminCoupon.
 router.get('/salesReport',adminSessionCheck.adminSessionChecker,adminReport.getSalesReport)
 
 //Chart router
-router.get('/chartList',adminSessionCheck.adminSessionChecker,adminChart.chartStatusCount)
+router.get('/orderCount',adminSessionCheck.adminSessionChecker,adminChart.orderStatusCount)
 
 module.exports = router
