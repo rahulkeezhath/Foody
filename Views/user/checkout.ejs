@@ -38,8 +38,12 @@
         <div class="row justify-content-center">
         <div class="col-xl-7 ftco-animate">
                         <form action="" class="billing-form" id="checkoutForm">
-
+  
                             <div class="form-check my-2 mx-2">
+                                <% let address = addressList ? addressList.address : "" %>
+                                <% if (address == "") { %>
+                                    <h4>No Address. Add Some Address</h4>
+                                    <% } else { %>
                                 <% for (var i=0; i<addressList.details.length;i++) { %>
                                     <input type="radio" 
                                     value="<%= addressList.details[i].name %>,
@@ -65,6 +69,7 @@
                                             <strong>Address & Pincode : - </strong>
                                             <%= addressList.details[i].address %> - <%= addressList.details[i].pincode %>
                                         </div><br>
+                                        <% } %>
                                         <% } %>
                                     </label>
                             </div>

@@ -22,10 +22,10 @@ const placeOrder = async(req,res)=>{
   if(req.session.user){
   cartCount = await userCartMgmt.getCartCount(req.session.user._id)
   let products=  await userCartMgmt.getCartProducts(req.session.user._id)
-   let addressList = await userAddressMgmt.showAddress(req.session.user._id)
-  // let totalAmount = await userCartMgmt.getTotalAmount(req.session.user._id)
-
-  res.render('user/checkout',{admin:false,user:true,userData,cartCount,products,totalValue,addressList})
+     await userAddressMgmt.showAddress(req.session.user._id).then((addressList)=>{
+    let address = addressList ? addressList.address : "";
+    res.render('user/checkout',{admin:false,user:true,userData,cartCount,products,totalValue,addressList,address})
+   })
   }
 }
 
