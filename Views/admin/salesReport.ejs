@@ -2,7 +2,7 @@
   <section class="home-section mt-5">
   <div class="container" id="content">
     <div class="d-flex justify-content-end  p-3">
-        <button class="btn btn-success" onclick="downloadSalesReport()">Download</button>
+        <button class="btn btn-success" onclick="generatePDF()">Download</button>
     </div>
           <table id="order-table" class="table table-striped table-bordered">
               <thead class="bg-secondary">
@@ -36,8 +36,18 @@
   </div>
 </section>
 
-  <script>
-    function downloadSalesReport(){
-        print()
-    }
-  </script>
+<script>
+// File Exporting
+function generatePDF() {
+      const element = document.getElementById('order-table');
+      var opt = {
+          margin: 1,
+          filename: 'orderReportPdf_example.pdf',
+          image: { type: 'png', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+      };
+      // Choose the element that our invoice is rendered in.
+      html2pdf().set(opt).from(element).save();
+    }
+</script>

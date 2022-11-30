@@ -31,10 +31,10 @@ module.exports={
             }
         })
     },
-    doSignup:(verified,name,email,phoneNumber,password)=>{
+    doSignup:(verified,name,email,phoneNumber,password,state)=>{
         return new Promise(async(resolve,reject)=>{
             password=await bcrypt.hash(password,10)
-            db.get().collection(collection.USER_CREDENTIALS).insertOne({verified,name,email,phoneNumber,password}).then((data)=>{
+            db.get().collection(collection.USER_CREDENTIALS).insertOne({verified,name,email,phoneNumber,password,state}).then((data)=>{
                 resolve(data)
             })
         })

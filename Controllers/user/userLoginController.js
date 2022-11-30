@@ -65,7 +65,7 @@ const userSignupPage = (req,res)=>{
 
 const userSignupAction = (req,res)=>{
     let verified = 0
-
+    let state = 'active'
     const{name,email,phoneNumber,password} = req.body
         let mailDetails = {
             from: process.env.EMAIL,
@@ -82,7 +82,7 @@ const userSignupAction = (req,res)=>{
             }
         })
     
-    userLogin.doSignup(verified,name,email,phoneNumber,password).then((response)=>{
+    userLogin.doSignup(verified,name,email,phoneNumber,password,state).then((response)=>{
         userID = response.insertedId
         console.log(OTP);
         res.render('user/otpVerification',{admin:false,user:false})
@@ -104,7 +104,7 @@ const verifyOtp = async(req,res)=>{
             categoryDisplay.showCategory().then((category)=>{
                 req.session.user = response.user
                 let userData = req.session.user
-            res.render('user/userHomeLanding',{admin:false,user:true,banner,product,userData,category})
+            res.render('user/userHomeLanding',{admin:false,user:true,cartCount,banner,product,userData,category})
         })
     })
 })
