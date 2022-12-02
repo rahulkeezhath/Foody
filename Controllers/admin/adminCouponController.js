@@ -1,5 +1,5 @@
 const { response } = require('express')
-const couponMgmt = require('../../Model/admincoupon')
+const couponMgmt = require('../../Model/adminCoupon')
 
 
 const couponPage = (req,res)=>{
