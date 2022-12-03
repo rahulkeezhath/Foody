@@ -61,13 +61,20 @@ const addProductPage = (req,res)=>{
     }
 
 
-const deleteProduct = (req,res)=>{
-    let productId = req.query.id
-    Product.deleteProduct(productId).then((response)=>{
-       res.json(response)
+
+const outOfStock = (req,res)=>{
+    const productDetails = req.query.id
+    Product.outOfStock(productDetails).then((response)=>{
+        res.json({status:true})
     })
 }
 
+const Instock = (req,res)=>{
+    const productDetails = req.query.id
+    Product.Instock(productDetails).then((response)=>{
+        res.json({status:true})
+    })
+}
 
 const editProductAction = (req,res)=>{
     let id = req.body.id
@@ -87,6 +94,7 @@ module.exports={
     addNewProduct,
      addProductPage,
      editProduct,  
-    deleteProduct,
+    outOfStock,
+    Instock,
     editProductAction
 }

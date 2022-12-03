@@ -57,8 +57,8 @@ router.get('/addProducts',adminSessionCheck.adminSessionChecker,addProduct.addNe
 router.post('/addNewProduct',adminSessionCheck.adminSessionChecker,upload.single('productImage'),addProduct.addProductPage)
 router.get('/editProduct',adminSessionCheck.adminSessionChecker,addProduct.editProduct)
 router.post('/editProductAction',adminSessionCheck.adminSessionChecker,upload.single('productImage'),addProduct.editProductAction)
-router.delete('/deleteProduct',adminSessionCheck.adminSessionChecker,addProduct.deleteProduct)
-
+router.post('/outOfStock',adminSessionCheck.adminSessionChecker,addProduct.outOfStock)
+router.post('/inStock',adminSessionCheck.adminSessionChecker,addProduct.Instock)
 
 // Banner router
 router.get('/adminBannerPage',adminSessionCheck.adminSessionChecker,adminBanner.adminBannerPage)

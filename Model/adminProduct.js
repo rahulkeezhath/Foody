@@ -6,7 +6,8 @@ const db = require('../config/connection')
 module.exports={
     doProduct:(imageID,addProduct)=>{
         return new Promise(async(resolve,reject)=>{
-            db.get().collection(collection.ADD_PRODUCT).insertOne(imageID,addProduct).then((data)=>{
+            let state = 'Active'
+            db.get().collection(collection.ADD_PRODUCT).insertOne(imageID,addProduct,state).then((data)=>{
                 resolve.apply(data)
             })
         })
@@ -40,18 +41,32 @@ module.exports={
               brand:product.brand,
               quantity:product.quantity,
               productDescription:product.productDescription,
-              Picture: image
+              Picture: image,
+              state:'Active'
             }
         }).then((response)=>{
-            resolve()
+            resolve(response)
         })
         })
     },
-
-
-    deleteProduct:(productId)=>{
-        return new Promise(async(resolve,reject)=>{
-            await db.get().collection(collection.ADD_PRODUCT).deleteOne({_id:ObjectId(productId)}).then((response)=>{
+    outOfStock:(productDetails)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.ADD_PRODUCT).updateOne({_id:ObjectId(productDetails)},
+            {
+                $set:{state:'Deleted'}
+            }
+            ).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    Instock:(productDetails)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.ADD_PRODUCT).updateOne({_id:ObjectId(productDetails)},
+            {
+                $set:{state:'Active'}
+            }
+            ).then((response)=>{
                 resolve(response)
             })
         })

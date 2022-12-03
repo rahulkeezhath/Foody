@@ -16,8 +16,8 @@
         <th scope="col">Quantity</th>
         <th scope="col">Product Description</th>
         <th scope="col">Product Image</th>
-        <th scope="col">Options</th>
-        
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
         
       </tr>
     </thead>
@@ -32,9 +32,13 @@
         <td><%= product[i].quantity %></td>
         <td><%= product[i].productDescription %></td>
         <td> <img src="<%= product[i].Picture%>" style="width: 75px; height: 75px;" alt=""></td>
-        <td><a class="btn btn-primary" href="/admin/editProduct?id=<%= product[i]._id%>">Edit</a><br>
-        <a class="btn btn-danger" href="#" onclick="deleteProduct('<%= product[i]._id%>')">Delete</a></td>
-      </tr>
+        <td><a class="btn btn-primary" href="/admin/editProduct?id=<%= product[i]._id%>">Edit</a><br></td>
+        <td> <% if(product[i].state == 'Active') { %> <a class="btn btn-danger" href="#" onclick="outOfStock('<%= product[i]._id%>')">Out of Stock</a>
+          <% } else { %>
+            <a class="btn btn-danger" href="#" onclick="inStock('<%= product[i]._id%>')">In stock</a>
+            <% } %>
+        </td>
+        </tr>
       <% } %>
     </tbody>
   </table>
@@ -47,31 +51,32 @@
 
 <script>
 
-function deleteProduct(productId){
-      swal({
-      title: "DELETE",
-      text: "DO YOU WANT TO DELETE THIS PRODUCT!",
-      icon: "warning",
-      buttons: ["CANCEL","OK"],
-    }).then(val=>{
-      if(val){
-        fetch('/admin/deleteProduct?id='+productId,
-        {
-          method:'delete'
-        }
-        ).then(res=> res.json()).then(data=>{
-        
-            swal({
-      title: "SUCCESS",
-      text: "PRODUCT SUCCESSFULLY DELETED",
-      icon: "success",
-      button:"OK",
-    })
-      location.reload()
-        })
-      }
-    })
-    }
+
+function outOfStock(productId){
+  fetch('/admin/outOfStock?id='+productId,{
+    method:'post',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify()
+  }).then(()=>{
+    window.location.reload()
+  }).catch((error)=>{
+    console.log('error',error);
+  })
+}
+
+function inStock(productId){
+  fetch('/admin/inStock?id='+productId,{
+    method:'post',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify()
+  }).then(()=>{
+    window.location.reload()
+  }).catch((error)=>{
+    console.log('error',error);
+  })
+}
+
+
 
 
 $(document).ready( function () {
