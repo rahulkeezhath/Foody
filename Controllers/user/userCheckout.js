@@ -3,7 +3,7 @@ const userCartMgmt = require('../../Model/userCartMgmt')
 const razorpayMgmt = require('../../Model/razorpay')
 const userCouponMgmt = require('../../Model/userCoupon')
 const userAddressMgmt = require('../../Model/userAddress')
-const userAddress = require("../../Model/userAddress")
+
 
 const userCheckout = async(req,res)=>{
   let userData = req.session.user
@@ -17,7 +17,7 @@ const userCheckout = async(req,res)=>{
 
 const placeOrder = async(req,res)=>{
   let userData = req.session.user
-  let totalValue = req.query.finalTotal
+  let totalValue = Math.round(req.query.finalTotal)
   let cartCount = null
   if(req.session.user){
   cartCount = await userCartMgmt.getCartCount(req.session.user._id)
@@ -59,7 +59,7 @@ const payment = async(req,res)=>{
 
 
  const displayCheckoutPage = async(req,res)=>{
-  let finalTotal = (req.body.totalValue)
+  let finalTotal = Math.round(req.body.totalValue)
   let details = req.body
   details.finalTotal = parseInt(details.totalValue)
   if(details.couponCode===''){

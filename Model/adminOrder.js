@@ -6,7 +6,7 @@ const { response } = require('express')
 module.exports={
     showOrders:()=>{
         return new Promise(async(resolve,reject)=>{
-            let orderItems = await db.get().collection(collection.ORDER_COLLECTION).find().toArray()
+            let orderItems = await db.get().collection(collection.ORDER_COLLECTION).find().sort({date:-1}).toArray()
 
 
             if(orderItems.length>0){

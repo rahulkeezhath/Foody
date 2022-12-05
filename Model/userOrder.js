@@ -6,7 +6,7 @@ module.exports = {
     getUserOrders:(userId)=>{
         return new Promise(async(resolve,reject)=>{
             console.log(userId)
-            let orders = await db.get().collection(collection.ORDER_COLLECTION).find({userId:ObjectId(userId)}).toArray()
+            let orders = await db.get().collection(collection.ORDER_COLLECTION).find({userId:ObjectId(userId)}).sort({date:-1}).toArray()
             resolve(orders)
         })
     },
