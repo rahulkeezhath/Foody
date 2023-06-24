@@ -1,7 +1,6 @@
 const db = require('../config/connection')
 const collection = require('../config/collection')
 const Razorpay = require('razorpay');
-const { resolve } = require('node:path');
 const { ObjectId } = require('mongodb');
 var instance = new Razorpay({
     key_id: process.env.Razorpay_KeyId,

@@ -13,7 +13,6 @@ const adminReport = require('../Controllers/admin/adminReportController')
 const adminChart = require('../Controllers/admin/adminHomeController')
 const {storage} = require('../cloudinary/Cloud')
 const upload = multer({storage})
-const { route } = require('./user')
 const  adminSessionCheck  = require('../Middlewares/sessionMiddleware')
 
 
